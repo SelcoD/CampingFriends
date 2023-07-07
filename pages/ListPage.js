@@ -1,7 +1,7 @@
 import React from "react";
 import CampingCard from "../components/CampingCard";
 import { campingTrips } from "../data/campingTrips";
-import { Container, Card, Header, Footer } from "../styles.js";
+import { Container, Card, Header, Footer } from "../styles/styles";
 
 export default function ListPage() {
   return (
