@@ -1,16 +1,24 @@
 import React from "react";
 import CampingCard from "../components/CampingCard";
 import { campingTrips } from "../data/campingTrips";
+import { Container, Card, Header, Footer } from "../styles";
 
-const ListPage = () => {
+export default function ListPage() {
   return (
-    <div>
-      <h1>Organize your Camping Trips</h1>
-      {campingTrips.map((trip) => (
-        <CampingCard key={trip.id} trip={trip} />
-      ))}
-    </div>
+    <>
+      <Header>
+        <h1>Organize your Camping Trips</h1>
+      </Header>
+      <Container>
+        {campingTrips.map((trip) => (
+          <Card key={trip.id}>
+            <CampingCard trip={trip} />
+          </Card>
+        ))}
+      </Container>
+      <Footer>
+        <p>© 2023 Your App</p>
+      </Footer>
+    </>
   );
-};
-
-export default ListPage;
+}
