@@ -1,4 +1,3 @@
-import React from "react";
 import CampingCard from "../components/CampingCard";
 import { campingTrips } from "../data/campingTrips";
 import { Container, Card, Header, Footer } from "../styles/styles";

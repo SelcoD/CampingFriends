@@ -1,4 +1,3 @@
-import React from "react";
 import { Card } from "../styles/styles";
 
 const CampingCard = ({ trip }) => {
