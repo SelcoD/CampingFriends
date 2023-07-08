@@ -1,5 +1,3 @@
-import { Card } from "../styles/styles";
-
 const CampingCard = ({ trip }) => {
   return (
     <div>
