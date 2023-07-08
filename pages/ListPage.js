@@ -17,7 +17,7 @@ export default function ListPage() {
         ))}
       </Container>
       <Footer>
-        <p>© 2023 Your App</p>
+        <p>FOOTER</p>
       </Footer>
     </>
   );
