@@ -7,7 +7,7 @@ export default function ListPage() {
   return (
     <>
       <Header>
-        <h1>Organize your Camping Trips</h1>
+        <h1>Organize your Trips</h1>
       </Header>
       <Container>
         {campingTrips.map((trip) => (
