@@ -17,9 +17,14 @@ export default function DetailPage() {
           <h2>{trip.date}</h2>
           <h2>{trip.location}</h2>
           <ul>
-            {trip.images.map(({ id, images, location }) => (
-              <li key={id}>
-                <Image src={images} width={300} height={300} alt={location} />
+            {trip.images.map((source) => (
+              <li key={source}>
+                <Image
+                  src={source}
+                  width={300}
+                  height={300}
+                  alt={trip.location}
+                />
               </li>
             ))}
           </ul>
@@ -30,7 +35,6 @@ export default function DetailPage() {
           <button>Go to List Page</button>
         </Link>
       </Container>
-
       <Footer>
         <p>FOOTER</p>
       </Footer>
