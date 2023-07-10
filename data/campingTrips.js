@@ -6,7 +6,7 @@ export const campingTrips = [
     location: "Leucate",
     details: ["-windy", "-large spaces", "-sunny", "-cloudy"],
     friends: ["Chris", "Maik"],
-    images: ["/images/leucate-map.png", "/images/leucate-plage.jpeg"],
+    images: ["/../public/leucate-pano.jpg", "/../public/leucate-plage.jpeg"],
   },
   {
     id: 2,

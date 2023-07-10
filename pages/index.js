@@ -1,6 +1,7 @@
 import CampingCard from "../components/CampingCard";
 import { campingTrips } from "../data/campingTrips";
 import { Container, Card, Header, Footer } from "../styles/styles";
+import Link from "next/link";
 
 export default function ListPage() {
   return (
