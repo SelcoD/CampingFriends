@@ -1,7 +1,23 @@
-export default function HomePage() {
+import CampingCard from "../components/CampingCard";
+import { campingTrips } from "../data/campingTrips";
+import { Container, Card, Header, Footer } from "../styles/styles";
+
+export default function ListPage() {
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <>
+      <Header>
+        <h1>Organize your Trips</h1>
+      </Header>
+      <Container>
+        {campingTrips.map((trip) => (
+          <Card key={trip.id}>
+            <CampingCard trip={trip} />
+          </Card>
+        ))}
+      </Container>
+      <Footer>
+        <p>FOOTER</p>
+      </Footer>
+    </>
   );
 }
