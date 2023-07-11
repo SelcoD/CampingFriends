@@ -1,6 +1,6 @@
 export const campingTrips = [
   {
-    id: 1,
+    id: "1",
     day: "Monday",
     date: "6.03.2023",
     location: "Leucate",
@@ -9,17 +9,21 @@ export const campingTrips = [
     images: ["/../public/leucate-pano.jpg", "/../public/leucate-plage.jpeg"],
   },
   {
-    id: 2,
+    id: "2",
     day: "Sunday",
     date: "9.04.2023",
     location: "Barcelona",
+    details: ["-windy", "-large spaces", "-sunny", "-cloudy"],
     friends: ["Saskia"],
+    images: ["/../public/leucate-pano.jpg", "/../public/leucate-plage.jpeg"],
   },
   {
-    id: 3,
+    id: "3",
     day: "Sunday",
     date: "6.08.2023",
     location: "Paris",
+    details: ["-windy", "-large spaces", "-sunny", "-cloudy"],
     friends: ["Saskia", "Bailey"],
+    images: ["/../public/leucate-pano.jpg", "/../public/leucate-plage.jpeg"],
   },
 ];

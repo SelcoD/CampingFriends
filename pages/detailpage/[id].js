@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
-import { campingTrips } from "../../data/campingTrips";
+/*import { campingTrips } from "../../data/campingTrips";*/
 import { Container, Card, Header, Footer } from "../../styles/styles";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function DetailPage() {
+export default function DetailPage({ campingTrips }) {
   const router = useRouter();
-  let trip = campingTrips.find(
-    (campingTrip) => campingTrip.id === router.query.id
-  );
+  const { id } = router.query;
+
+  let trip = campingTrips.find((campingTrip) => campingTrip.id === id);
+  console.log(campingTrips);
 
   return (
     <>
