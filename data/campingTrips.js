@@ -6,7 +6,7 @@ export const campingTrips = [
     location: "Leucate",
     details: ["-windy", "-large spaces", "-sunny", "-cloudy"],
     friends: ["Chris", "Maik"],
-    images: ["/../public/leucate-pano.jpg", "/../public/leucate-plage.jpeg"],
+    images: ["/../public/leucate-pano.jpg", "/../public/beach.jpg"],
   },
   {
     id: "2",
@@ -15,7 +15,7 @@ export const campingTrips = [
     location: "Barcelona",
     details: ["-windy", "-large spaces", "-sunny", "-cloudy"],
     friends: ["Saskia"],
-    images: ["/../public/leucate-pano.jpg", "/../public/leucate-plage.jpeg"],
+    images: ["/../public/leucate-pano.jpg", "/../public/beach.jpg"],
   },
   {
     id: "3",
@@ -24,6 +24,6 @@ export const campingTrips = [
     location: "Paris",
     details: ["-windy", "-large spaces", "-sunny", "-cloudy"],
     friends: ["Saskia", "Bailey"],
-    images: ["/../public/leucate-pano.jpg", "/../public/leucate-plage.jpeg"],
+    images: ["/../public/leucate-pano.jpg", "/../public/beach.jpg"],
   },
 ];

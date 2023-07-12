@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-/*import { campingTrips } from "../../data/campingTrips";*/
+
 import { Container, Card, Header, Footer } from "../../styles/styles";
 import Image from "next/image";
 import Link from "next/link";
