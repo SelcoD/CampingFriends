@@ -21,10 +21,6 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  &:hover {
-    transform: translateY(-4px);
-  }
 `;
 
 export const Header = styled.header`

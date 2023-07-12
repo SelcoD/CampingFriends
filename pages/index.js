@@ -1,6 +1,7 @@
 import CampingCard from "../components/CampingCard";
 import { campingTrips } from "../data/campingTrips";
 import { Container, Card, Header, Footer } from "../styles/styles";
+import Link from "next/link";
 
 export default function ListPage() {
   return (
@@ -10,9 +11,11 @@ export default function ListPage() {
       </Header>
       <Container>
         {campingTrips.map((trip) => (
-          <Card key={trip.id}>
-            <CampingCard trip={trip} />
-          </Card>
+          <Link href={`/detailpage/${trip.id}`} key={trip.id}>
+            <Card key={trip.id}>
+              <CampingCard trip={trip} />
+            </Card>
+          </Link>
         ))}
       </Container>
       <Footer>
