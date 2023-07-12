@@ -14,7 +14,7 @@ export default function DetailPage({ campingTrips }) {
   return (
     <>
       <Header>
-        <h1>Check the details fo your trips</h1>
+        <h1>Check the details of your trips</h1>
       </Header>
       <Container>
         <Card>
