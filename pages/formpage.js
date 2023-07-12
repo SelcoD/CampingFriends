@@ -42,7 +42,7 @@ export default function FormPage() {
               <br />
               <input type="date" placeholder="Date" required />
               <br />
-              <label for="freinds">Friends :</label>
+              <label for="friends">Friends :</label>
               <br />
               <input type="text" name="friends" placeholder="Friends" />
             </div>
