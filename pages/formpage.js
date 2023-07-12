@@ -14,7 +14,7 @@ export default function FormPage() {
         <Card>
           <form>
             <div>
-              <label for="location">Location :</label>
+              <label htmlFor="location">Location:</label>
               <br />
               <input
                 type="text"
@@ -23,26 +23,26 @@ export default function FormPage() {
                 required
               />
               <br />
-              <input type="checkbox" />
-              <label for="condition1">Good weather</label>
+              <input type="checkbox" id="condition1" />
+              <label htmlFor="condition1">Good weather</label>
               <br />
-              <input type="checkbox" />
-              <label for="condition2">Sunny</label>
+              <input type="checkbox" id="condition2" />
+              <label htmlFor="condition2">Sunny</label>
               <br />
-              <input type="checkbox" />
-              <label for="condition3">Cloudy</label>
+              <input type="checkbox" id="condition3" />
+              <label htmlFor="condition3">Cloudy</label>
               <br />
-              <input type="checkbox" />
-              <label for="condition4">Rainy</label>
+              <input type="checkbox" id="condition4" />
+              <label htmlFor="condition4">Rainy</label>
               <br />
-              <input type="checkbox" />
-              <label for="condition5">Snowy</label>
+              <input type="checkbox" id="condition5" />
+              <label htmlFor="condition5">Snowy</label>
               <br />
-              <label for="date">Date :</label>
+              <label htmlFor="date">Date:</label>
               <br />
               <input type="date" placeholder="Date" required />
               <br />
-              <label for="friends">Friends :</label>
+              <label htmlFor="friends">Friends:</label>
               <br />
               <input type="text" name="friends" placeholder="Friends" />
             </div>
