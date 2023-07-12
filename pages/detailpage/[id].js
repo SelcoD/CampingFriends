@@ -37,7 +37,7 @@ export default function DetailPage({ campingTrips }) {
           <h4>{trip && trip.details.join(", ")}</h4>
           <h4>{trip && trip.friends.join(", ")}</h4>
         </Card>
-        <Link href={`/`}>
+        <Link href="/">
           <button>Go to List Page</button>
         </Link>
       </Container>

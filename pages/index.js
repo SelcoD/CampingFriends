@@ -11,13 +11,18 @@ export default function ListPage() {
       </Header>
       <Container>
         {campingTrips.map((trip) => (
-          <Link href={`/detailpage/${trip.id}`} key={trip.id}>
+          <Link href="/detailpage/${trip.id}" key={trip.id}>
             <Card key={trip.id}>
               <CampingCard trip={trip} />
             </Card>
           </Link>
         ))}
+
+        <Link href="/formpage">
+          <button>Add a new trip</button>
+        </Link>
       </Container>
+
       <Footer>
         <p>FOOTER</p>
       </Footer>
