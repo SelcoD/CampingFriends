@@ -17,12 +17,10 @@ export default function ListPage() {
             </Card>
           </Link>
         ))}
-
         <Link href="/formpage">
           <button>Add a new trip</button>
         </Link>
       </Container>
-
       <Footer>
         <p>FOOTER</p>
       </Footer>

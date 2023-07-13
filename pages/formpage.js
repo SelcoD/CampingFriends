@@ -18,6 +18,7 @@ export default function FormPage() {
               <br />
               <input
                 type="text"
+                id="location"
                 name="location"
                 placeholder="Location"
                 required
@@ -40,11 +41,16 @@ export default function FormPage() {
               <br />
               <label htmlFor="date">Date:</label>
               <br />
-              <input type="date" placeholder="Date" required />
+              <input type="date" id="date" placeholder="Date" required />
               <br />
               <label htmlFor="friends">Friends:</label>
               <br />
-              <input type="text" name="friends" placeholder="Friends" />
+              <input
+                type="text"
+                id="friends"
+                name="friends"
+                placeholder="Friends"
+              />
             </div>
             <div>
               <button type="submit">+ Add this trip</button>
