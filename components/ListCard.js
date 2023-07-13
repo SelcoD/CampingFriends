@@ -1,4 +1,4 @@
-const CampingCard = ({ trip }) => {
+const ListCard = ({ trip }) => {
   return (
     <div>
       <h2>{trip.location}</h2>
@@ -8,4 +8,4 @@ const CampingCard = ({ trip }) => {
   );
 };
 
-export default CampingCard;
+export default ListCard;
