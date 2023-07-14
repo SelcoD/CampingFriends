@@ -1,7 +1,7 @@
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
-export default function Form() {
+export default function FormCard() {
   return (
     <>
       <Header>
@@ -54,9 +54,7 @@ export default function Form() {
             </div>
           </form>
         </Card>
-        <Link href="/">
-          <button>Go to List Page</button>
-        </Link>
+        <Link href="/">Go to List Page</Link>
       </Container>
       <Footer>
         <p>FOOTER</p>

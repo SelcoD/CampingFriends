@@ -1,6 +1,5 @@
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
-import ListCard from "./ListCard";
 import styled from "styled-components";
 
 export default function TripList({ campingTrips }) {
@@ -15,14 +14,14 @@ export default function TripList({ campingTrips }) {
             <StyledList key={trip.id}>
               <Link href={`/detailpage/${trip.id}`}>
                 <Card>
-                  <ListCard trip={trip} />
+                  <h2>{trip.location}</h2>
+                  <p>Date: {trip.date}</p>
+                  <p>Friends: {trip.friends.join(", ")}</p>
                 </Card>
               </Link>
             </StyledList>
           ))}
-          <Link href="/formpage">
-            <button>Add a new trip</button>
-          </Link>
+          <Link href="/formpage">Add a new trip</Link>
         </Container>
       </ul>
       <Footer>

@@ -30,9 +30,7 @@ export default function DetailCard({ campingTrips }) {
           <h4>{campingTrips && campingTrips.details.join(", ")}</h4>
           <h4>{campingTrips && campingTrips.friends.join(", ")}</h4>
         </Card>
-        <Link href="/">
-          <button>Go to List Page</button>
-        </Link>
+        <Link href="/">Go to List Page</Link>
       </Container>
       <Footer>
         <p>FOOTER</p>

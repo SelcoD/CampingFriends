@@ -1,9 +1,9 @@
-import Form from "@/components/Form";
+import FormCard from "@/components/FormCard";
 
 export default function FormPage() {
   return (
     <>
-      <Form />
+      <FormCard />
     </>
   );
 }
