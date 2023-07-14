@@ -1,7 +1,39 @@
+import { useState } from "react";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
 export default function FormCard() {
+  const [friend, setFriend] = useState("");
+  const [friendList, setFriendList] = useState([]);
+
+  const handleFriendChange = (event) => {
+    setFriend(event.target.value);
+  };
+
+  const handleAddFriend = () => {
+    if (friend.trim() !== "") {
+      setFriendList([...friendList, friend]);
+      setFriend("");
+    }
+  };
+
+  const handleDeleteFriend = (friendIndex) => {
+    const updatedFriendList = friendList.filter(
+      (_, index) => index !== friendIndex
+    );
+    setFriendList(updatedFriendList);
+  };
+
+  const handleEditFriend = (friendIndex, newValue) => {
+    const updatedFriendList = friendList.map((friend, index) => {
+      if (index === friendIndex) {
+        return newValue;
+      }
+      return friend;
+    });
+    setFriendList(updatedFriendList);
+  };
+
   return (
     <>
       <Header>
@@ -42,12 +74,41 @@ export default function FormCard() {
               <br />
               <label htmlFor="friends">Friends:</label>
               <br />
-              <input
-                type="text"
-                id="friends"
-                name="friends"
-                placeholder="Friends"
-              />
+              <div>
+                <input
+                  type="text"
+                  id="friends"
+                  name="friends"
+                  placeholder="Friends"
+                  value={friend}
+                  onChange={handleFriendChange}
+                />
+                <button type="button" onClick={handleAddFriend}>
+                  +
+                </button>
+              </div>
+              <ul>
+                {friendList.map((friend, index) => (
+                  <li key={index}>
+                    {friend}
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteFriend(index)}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newValue = prompt("Enter new value");
+                        handleEditFriend(index, newValue);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div>
               <button type="submit">+ Add this trip</button>
