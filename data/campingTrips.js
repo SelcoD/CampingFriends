@@ -27,3 +27,7 @@ export const campingTrips = [
     images: ["/leucate-pano.jpg", "/beach.jpg"],
   },
 ];
+
+export const addCampingTrip = (newTrip) => {
+  campingTrips.push(newTrip);
+};

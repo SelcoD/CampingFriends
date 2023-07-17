@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
@@ -9,11 +10,7 @@ export default function FormCard() {
   const [friends, setFriends] = useState([]);
   const [friend, setFriend] = useState("");
 
-  const locationRef = useRef(null);
-
-  useEffect(() => {
-    locationRef.current.focus();
-  }, []);
+  const router = useRouter();
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
@@ -54,12 +51,13 @@ export default function FormCard() {
       friends: friends,
       images: [],
     };
-    console.log(newCampingTrip);
+    // Speichern der Daten im Local Storage
     const existingTrips =
       JSON.parse(localStorage.getItem("campingTrips")) || [];
     const updatedTrips = [...existingTrips, newCampingTrip];
     localStorage.setItem("campingTrips", JSON.stringify(updatedTrips));
-    window.location.reload();
+    // Weiterleitung zur ListPage
+    router.push("/");
   };
 
   return (
@@ -81,7 +79,6 @@ export default function FormCard() {
                 required
                 value={location}
                 onChange={handleLocationChange}
-                ref={locationRef}
               />
               <br />
               <input
@@ -157,7 +154,7 @@ export default function FormCard() {
               </ul>
             </div>
             <div>
-              <button type="submit">+ Add this trip</button>
+              <button type="submit">Add to Trip</button>
             </div>
           </form>
         </Card>
