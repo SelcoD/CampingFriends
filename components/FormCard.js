@@ -40,6 +40,12 @@ export default function FormCard() {
     }
   };
 
+  const handleDeleteFriend = (index) => {
+    const updatedFriends = [...friends];
+    updatedFriends.splice(index, 1);
+    setFriends(updatedFriends);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const newCampingTrip = {
@@ -149,7 +155,15 @@ export default function FormCard() {
               </div>
               <ul>
                 {friends.map((friend, index) => (
-                  <li key={index}>{friend}</li>
+                  <li key={index}>
+                    {friend}
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteFriend(index)}
+                    >
+                      Delete
+                    </button>
+                  </li>
                 ))}
               </ul>
             </div>
