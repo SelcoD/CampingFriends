@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { v4 as uuidv4 } from "uuid";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
@@ -49,7 +50,7 @@ export default function FormCard() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newCampingTrip = {
-      id: Math.random().toString(),
+      id: uuidv4(), // Generiere eine eindeutige ID mit uuid
       day: "",
       date: date,
       location: location,
