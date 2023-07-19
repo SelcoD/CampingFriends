@@ -1,9 +1,10 @@
 import { Container, Card, Header, Footer } from "../styles/styles";
-import Image from "next/image";
+
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function DetailCard({ campingTrips }) {
+export default function DetailCard({ campingTrip }) {
+  console.log(campingTrip);
   return (
     <>
       <Header>
@@ -11,24 +12,27 @@ export default function DetailCard({ campingTrips }) {
       </Header>
       <Container>
         <Card>
-          <h2>{campingTrips && campingTrips.day}</h2>
-          <h2>{campingTrips && campingTrips.date}</h2>
-          <h2>{campingTrips && campingTrips.location}</h2>
-          <ul>
-            {campingTrips &&
-              campingTrips.images.map((source) => (
-                <StyledList key={source}>
-                  <Image
-                    src={source}
-                    width={300}
-                    height={300}
-                    alt={campingTrips && campingTrips.location}
-                  />
-                </StyledList>
-              ))}
-          </ul>
-          <h4>{campingTrips && campingTrips.details.join(", ")}</h4>
-          <h4>{campingTrips && campingTrips.friends.join(", ")}</h4>
+          <h2>{campingTrip.location}</h2>
+          <h3>Conditions:</h3>
+          {campingTrip.conditions.length > 0 ? (
+            <ul>
+              {campingTrip.conditions.map((condition) => {
+                return <StyledList key={condition}>{condition}</StyledList>;
+              })}
+            </ul>
+          ) : (
+            <p>no conditions added</p>
+          )}
+          <h3>Friends:</h3>
+          {campingTrip.friends.length > 0 ? (
+            <ul>
+              {campingTrip.friends.map((friend) => {
+                return <StyledList key={friend}>{friend}</StyledList>;
+              })}
+            </ul>
+          ) : (
+            <p>no friends added</p>
+          )}
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>

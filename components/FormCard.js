@@ -1,69 +1,49 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { v4 as uuidv4 } from "uuid";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
-export default function FormCard() {
-  const [location, setLocation] = useState("");
+export default function FormCard({ onAddTrip }) {
   const [conditions, setConditions] = useState([]);
-  const [date, setDate] = useState("");
   const [friends, setFriends] = useState([]);
-  const [friend, setFriend] = useState("");
+  const [inputFriend, setInputFriend] = useState("");
 
   const router = useRouter();
 
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
-  };
-
-  const handleConditionChange = (event) => {
+  function handleConditionChange(event) {
     const condition = event.target.value;
     if (event.target.checked) {
-      setConditions([...conditions, condition]);
+      setConditions((prevConditions) => [...prevConditions, condition]);
     } else {
-      setConditions(conditions.filter((c) => c !== condition));
+      setConditions((prevConditions) =>
+        prevConditions.filter((_condition) => _condition !== condition)
+      );
     }
-  };
+  }
 
-  const handleDateChange = (event) => {
-    setDate(event.target.value);
-  };
+  function handleAddFriend() {
+    setFriends((prevFriends) => [...prevFriends, inputFriend]);
+    setInputFriend("");
+  }
 
-  const handleFriendChange = (event) => {
-    setFriend(event.target.value);
-  };
+  function handleInputChange(event) {
+    setInputFriend(event.target.value);
+  }
 
-  const handleAddFriend = () => {
-    if (friend.trim() !== "") {
-      setFriends([...friends, friend]);
-      setFriend("");
-    }
-  };
-
-  const handleDeleteFriend = (index) => {
-    const updatedFriends = [...friends];
-    updatedFriends.splice(index, 1);
-    setFriends(updatedFriends);
-  };
+  function handleDeleteFriend(friendToDelete) {
+    setFriends(friends.filter((friend) => friend !== friendToDelete));
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newCampingTrip = {
-      id: uuidv4(), // Generiere eine eindeutige ID mit uuid
-      day: "",
-      date: date,
-      location: location,
-      details: conditions,
-      friends: friends,
-      images: [],
-    };
-    // Speichern der Daten im Local Storage
-    const existingTrips =
-      JSON.parse(localStorage.getItem("campingTrips")) || [];
-    const updatedTrips = [...existingTrips, newCampingTrip];
-    localStorage.setItem("campingTrips", JSON.stringify(updatedTrips));
-    // Weiterleitung zur ListPage
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    data.friends = friends;
+    data.conditions = conditions;
+
+    onAddTrip(data);
     router.push("/");
   };
 
@@ -84,21 +64,21 @@ export default function FormCard() {
                 name="location"
                 placeholder="Location"
                 required
-                value={location}
-                onChange={handleLocationChange}
               />
               <br />
               <input
                 type="checkbox"
                 id="condition1"
+                name="conditions"
                 value="Good weather"
                 onChange={handleConditionChange}
               />
-              <label htmlFor="condition1">Good weather</label>
+              <label htmlFor="conditin1">Good weather</label>
               <br />
               <input
                 type="checkbox"
                 id="condition2"
+                name="conditions"
                 value="Sunny"
                 onChange={handleConditionChange}
               />
@@ -107,6 +87,7 @@ export default function FormCard() {
               <input
                 type="checkbox"
                 id="condition3"
+                name="conditions"
                 value="Cloudy"
                 onChange={handleConditionChange}
               />
@@ -115,6 +96,7 @@ export default function FormCard() {
               <input
                 type="checkbox"
                 id="condition4"
+                name="conditions"
                 value="Rainy"
                 onChange={handleConditionChange}
               />
@@ -123,6 +105,7 @@ export default function FormCard() {
               <input
                 type="checkbox"
                 id="condition5"
+                name="conditions"
                 value="Snowy"
                 onChange={handleConditionChange}
               />
@@ -133,10 +116,9 @@ export default function FormCard() {
               <input
                 type="date"
                 id="date"
+                name="date"
                 placeholder="Date"
                 required
-                value={date}
-                onChange={handleDateChange}
               />
               <br />
               <label htmlFor="friends">Friends:</label>
@@ -147,11 +129,11 @@ export default function FormCard() {
                   id="friends"
                   name="friends"
                   placeholder="Friends"
-                  value={friend}
-                  onChange={handleFriendChange}
+                  value={inputFriend}
+                  onChange={handleInputChange}
                 />
                 <button type="button" onClick={handleAddFriend}>
-                  +
+                  Add
                 </button>
               </div>
               <ul>
@@ -160,7 +142,7 @@ export default function FormCard() {
                     {friend}
                     <button
                       type="button"
-                      onClick={() => handleDeleteFriend(index)}
+                      onClick={() => handleDeleteFriend(friend)}
                     >
                       Delete
                     </button>

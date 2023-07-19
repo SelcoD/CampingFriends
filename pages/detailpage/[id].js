@@ -11,7 +11,7 @@ export default function DetailPage({ campingTrips }) {
 
   return (
     <>
-      <DetailCard campingTrips={currentTrip} />
+      <DetailCard campingTrip={currentTrip} />
     </>
   );
 }
