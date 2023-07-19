@@ -1,9 +1,9 @@
 import TripList from "@/components/TripList";
 
-export default function ListPage({ campingTrips }) {
+export default function ListPage({ campingTrips, onDeleteTrip }) {
   return (
     <>
-      <TripList campingTrips={campingTrips} />
+      <TripList campingTrips={campingTrips} onDeleteTrip={onDeleteTrip} />
     </>
   );
 }

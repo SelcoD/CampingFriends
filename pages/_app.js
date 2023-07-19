@@ -16,6 +16,10 @@ export default function App({ Component, pageProps }) {
       { ...newCampingTrip, id: uuidv4() },
     ]);
   }
+  function handleDeleteTrip(tripId) {
+    const updatedTrips = campingTrips.filter((trip) => trip.id !== tripId);
+    setCampingTrips(updatedTrips);
+  }
 
   return (
     <>
@@ -24,6 +28,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         campingTrips={campingTrips}
         handleAddTrip={handleAddTrip}
+        onDeleteTrip={handleDeleteTrip}
       />
     </>
   );

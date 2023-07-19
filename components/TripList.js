@@ -1,9 +1,12 @@
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
+import DeleteTripButton from "./DeleteTripButton";
 
-export default function TripList({ campingTrips }) {
-  console.log(campingTrips);
+export default function TripList({ campingTrips, onDeleteTrip }) {
+  const handleDeleteTrip = (tripId) => {
+    onDeleteTrip(tripId);
+  };
   return (
     <>
       <Header>
@@ -20,6 +23,10 @@ export default function TripList({ campingTrips }) {
                   <p>Friends: {trip.friends.join(", ")}</p>
                 </Card>
               </Link>
+              <DeleteTripButton
+                tripId={trip.id}
+                onDeleteTrip={handleDeleteTrip}
+              />
             </StyledList>
           ))}
           <Link href="/formpage">Add a new trip</Link>
@@ -31,6 +38,7 @@ export default function TripList({ campingTrips }) {
     </>
   );
 }
+
 const StyledList = styled.ul`
   list-style-type: none;
 `;
