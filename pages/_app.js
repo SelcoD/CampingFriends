@@ -20,6 +20,9 @@ export default function App({ Component, pageProps }) {
     const updatedTrips = campingTrips.filter((trip) => trip.id !== tripId);
     setCampingTrips(updatedTrips);
   }
+  function handleEditTrip(tripId) {
+    console.log(`Edit Trip with ID: ${tripId}`);
+  }
 
   return (
     <>
@@ -29,6 +32,7 @@ export default function App({ Component, pageProps }) {
         campingTrips={campingTrips}
         handleAddTrip={handleAddTrip}
         onDeleteTrip={handleDeleteTrip}
+        onEditTrip={handleEditTrip}
       />
     </>
   );

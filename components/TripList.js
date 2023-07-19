@@ -2,10 +2,14 @@ import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
 import DeleteTripButton from "./DeleteTripButton";
+import EditTripButton from "./EditTripButton";
 
-export default function TripList({ campingTrips, onDeleteTrip }) {
+export default function TripList({ campingTrips, onDeleteTrip, onEditTrip }) {
   const handleDeleteTrip = (tripId) => {
     onDeleteTrip(tripId);
+  };
+  const handleEditTrip = (tripId) => {
+    onEditTrip(tripId);
   };
   return (
     <>
@@ -27,6 +31,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                 tripId={trip.id}
                 onDeleteTrip={handleDeleteTrip}
               />
+              <EditTripButton tripId={trip.id} onEditTrip={handleEditTrip} />
             </StyledList>
           ))}
           <Link href="/formpage">Add a new trip</Link>
