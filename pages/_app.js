@@ -16,12 +16,17 @@ export default function App({ Component, pageProps }) {
       { ...newCampingTrip, id: uuidv4() },
     ]);
   }
+
   function handleDeleteTrip(tripId) {
     const updatedTrips = campingTrips.filter((trip) => trip.id !== tripId);
     setCampingTrips(updatedTrips);
   }
-  function handleEditTrip(tripId) {
-    console.log(`Edit Trip with ID: ${tripId}`);
+
+  function handleEditTrip(editedTrip) {
+    const updatedTrips = campingTrips.map((trip) =>
+      trip.id === editedTrip.id ? editedTrip : trip
+    );
+    setCampingTrips(updatedTrips);
   }
 
   return (
@@ -30,7 +35,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         campingTrips={campingTrips}
-        handleAddTrip={handleAddTrip}
+        onAddTrip={handleAddTrip}
         onDeleteTrip={handleDeleteTrip}
         onEditTrip={handleEditTrip}
       />
