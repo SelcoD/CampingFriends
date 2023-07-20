@@ -4,10 +4,6 @@ import styled from "styled-components";
 import DeleteTripButton from "./DeleteTripButton";
 
 export default function TripList({ campingTrips, onDeleteTrip }) {
-  const handleDeleteTrip = (tripId) => {
-    onDeleteTrip(tripId);
-  };
-
   return (
     <>
       <Header>
@@ -24,10 +20,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                   <p>Friends: {trip.friends.join(", ")}</p>
                 </Card>
               </Link>
-              <DeleteTripButton
-                tripId={trip.id}
-                onDeleteTrip={handleDeleteTrip}
-              />
+              <DeleteTripButton tripId={trip.id} onDeleteTrip={onDeleteTrip} />
               <Link href={`/editformpage/${trip.id}`} key={trip.id}>
                 <button>Edit</button>
               </Link>

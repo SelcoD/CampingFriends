@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
-export default function EditCard({ campingTrips, currentTrip, onAddTrip }) {
+export default function EditCard({ currentTrip, onEditTrip }) {
   const [conditions, setConditions] = useState(currentTrip.conditions || []);
   const [friends, setFriends] = useState(currentTrip.friends || []);
   const [inputFriend, setInputFriend] = useState("");
@@ -43,7 +43,7 @@ export default function EditCard({ campingTrips, currentTrip, onAddTrip }) {
     data.friends = friends;
     data.conditions = conditions;
 
-    onAddTrip({ ...currentTrip, ...data });
+    onEditTrip({ ...currentTrip, ...data });
 
     router.push("/");
   };
@@ -152,7 +152,10 @@ export default function EditCard({ campingTrips, currentTrip, onAddTrip }) {
               </ul>
             </div>
             <div>
-              <button type="submit">Save changes</button>
+              <button type="submit">
+                {" "}
+                onClick={() => onEditTrip(trip)} Save changes
+              </button>
             </div>
           </form>
         </Card>

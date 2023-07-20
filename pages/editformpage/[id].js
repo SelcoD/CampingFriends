@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import EditCard from "@/components/EditCard";
 
-export default function EditFormPage({ campingTrips }) {
+export default function EditFormPage({ campingTrips, onEditTrip }) {
   const router = useRouter();
   const { id } = router.query;
   if (!id) {
@@ -16,7 +16,11 @@ export default function EditFormPage({ campingTrips }) {
 
   return (
     <>
-      <EditCard campingTrips={campingTrips} currentTrip={currentTrip} />
+      <EditCard
+        campingTrips={campingTrips}
+        currentTrip={currentTrip}
+        onEditTrip={onEditTrip}
+      />
     </>
   );
 }

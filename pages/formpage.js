@@ -1,5 +1,5 @@
 import FormCard from "@/components/FormCard";
 
-export default function FormPage({ handleAddTrip }) {
-  return <FormCard onAddTrip={handleAddTrip} />;
+export default function FormPage({ onAddTrip }) {
+  return <FormCard onAddTrip={onAddTrip} />;
 }
