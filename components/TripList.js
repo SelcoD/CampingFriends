@@ -1,8 +1,9 @@
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
+import DeleteTripButton from "./DeleteTripButton";
 
-export default function TripList({ campingTrips }) {
+export default function TripList({ campingTrips, onDeleteTrip }) {
   return (
     <>
       <Header>
@@ -16,8 +17,16 @@ export default function TripList({ campingTrips }) {
                 <Card>
                   <h2>{trip.location}</h2>
                   <p>Date: {trip.date}</p>
-                  <p>Friends: {trip.friends.join(", ")}</p>
+                  {trip.friends.length > 0 ? (
+                    <p>Friends: {trip.friends.join(", ")}</p>
+                  ) : (
+                    <p>no friends added</p>
+                  )}
                 </Card>
+              </Link>
+              <DeleteTripButton tripId={trip.id} onDeleteTrip={onDeleteTrip} />
+              <Link href={`/editformpage/${trip.id}`}>
+                <button>Edit</button>
               </Link>
             </StyledList>
           ))}
@@ -30,6 +39,7 @@ export default function TripList({ campingTrips }) {
     </>
   );
 }
+
 const StyledList = styled.ul`
   list-style-type: none;
 `;

@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
-export default function FormCard({ onAddTrip }) {
+export default function EditCard({ currentTrip, onEditTrip }) {
   const [conditions, setConditions] = useState([]);
   const [friends, setFriends] = useState([]);
   const [inputFriend, setInputFriend] = useState("");
 
   const router = useRouter();
 
+  // Liste von möglichen Conditions (alle verfügbaren Conditions)
+  const allConditions = [
+    "Good weather",
+    "Sunny",
+    "Cloudy",
+    "Rainy",
+    "Snowy",
+    // Fügen Sie hier weitere Conditions hinzu, wenn benötigt
+  ];
+
+  useEffect(() => {
+    // Setzen der aktuellen Conditions des Trips in den State
+    setConditions(currentTrip.conditions || []);
+    // Setzen der aktuellen Freunde des Trips in den State
+    setFriends(currentTrip.friends || []);
+  }, [currentTrip]);
+
   function handleConditionChange(event) {
     const condition = event.target.value;
     if (event.target.checked) {
-      setConditions((prevConditions) => [...prevConditions, condition]);
+      // Wenn die Checkbox aktiviert wird, fügen Sie die Condition hinzu, wenn sie noch nicht vorhanden ist
+      if (!conditions.includes(condition)) {
+        setConditions((prevConditions) => [...prevConditions, condition]);
+      }
     } else {
+      // Wenn die Checkbox deaktiviert wird, entfernen Sie die Condition, falls sie vorhanden ist
       setConditions((prevConditions) =>
         prevConditions.filter((_condition) => _condition !== condition)
       );
@@ -43,14 +64,15 @@ export default function FormCard({ onAddTrip }) {
     data.friends = friends;
     data.conditions = conditions;
 
-    onAddTrip(data);
+    onEditTrip({ ...currentTrip, ...data });
+
     router.push("/");
   };
 
   return (
     <>
       <Header>
-        <h1>Add a new trip to your list</h1>
+        <h1>Edit the trip</h1>
       </Header>
       <Container>
         <Card>
@@ -63,54 +85,25 @@ export default function FormCard({ onAddTrip }) {
                 id="location"
                 name="location"
                 placeholder="Location"
+                defaultValue={currentTrip.location}
                 required
               />
               <br />
-              <input
-                type="checkbox"
-                id="condition1"
-                name="conditions"
-                value="Good weather"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="conditin1">Good weather</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition2"
-                name="conditions"
-                value="Sunny"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition2">Sunny</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition3"
-                name="conditions"
-                value="Cloudy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition3">Cloudy</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition4"
-                name="conditions"
-                value="Rainy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition4">Rainy</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition5"
-                name="conditions"
-                value="Snowy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition5">Snowy</label>
-              <br />
+              {/* Anzeigen aller Conditions mit Checkboxen */}
+              {allConditions.map((condition) => (
+                <div key={condition}>
+                  <input
+                    type="checkbox"
+                    id={`condition-${condition}`}
+                    name="conditions"
+                    value={condition}
+                    onChange={handleConditionChange}
+                    checked={conditions.includes(condition)}
+                  />
+                  <label htmlFor={`condition-${condition}`}>{condition}</label>
+                  <br />
+                </div>
+              ))}
               <label htmlFor="date">Date:</label>
               <br />
               <input
@@ -118,6 +111,7 @@ export default function FormCard({ onAddTrip }) {
                 id="date"
                 name="date"
                 placeholder="Date"
+                defaultValue={currentTrip.date}
                 required
               />
               <br />
@@ -151,7 +145,7 @@ export default function FormCard({ onAddTrip }) {
               </ul>
             </div>
             <div>
-              <button type="submit">Add to Trip</button>
+              <button type="submit">Save changes</button>
             </div>
           </form>
         </Card>

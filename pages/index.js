@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
 import TripList from "@/components/TripList";
 
-export default function ListPage() {
-  const [campingTrips, setCampingTrips] = useState([]);
-
-  useEffect(() => {
-    const storedTrips = JSON.parse(localStorage.getItem("campingTrips")) || [];
-    setCampingTrips(storedTrips);
-  }, []);
-
+export default function ListPage({ campingTrips, onDeleteTrip, onEditTrip }) {
   return (
-    <>
-      <TripList campingTrips={campingTrips} />
-    </>
+    <TripList
+      campingTrips={campingTrips}
+      onDeleteTrip={onDeleteTrip}
+      onEditTrip={onEditTrip}
+    />
   );
 }
