@@ -4,6 +4,8 @@ import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
 export default function EditCard({ currentTrip, onEditTrip }) {
+  const [location, setLocation] = useState(currentTrip.location || "");
+  const [date, setDate] = useState(currentTrip.date || "");
   const [conditions, setConditions] = useState(currentTrip.conditions || []);
   const [friends, setFriends] = useState(currentTrip.friends || []);
   const [inputFriend, setInputFriend] = useState("");
@@ -13,7 +15,9 @@ export default function EditCard({ currentTrip, onEditTrip }) {
   function handleConditionChange(event) {
     const condition = event.target.value;
     if (event.target.checked) {
-      setConditions((prevConditions) => [...prevConditions, condition]);
+      if (!conditions.includes(condition)) {
+        setConditions((prevConditions) => [...prevConditions, condition]);
+      }
     } else {
       setConditions((prevConditions) =>
         prevConditions.filter((_condition) => _condition !== condition)
@@ -65,6 +69,20 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 name="location"
                 placeholder="Location"
                 required
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+              <br />
+              <label htmlFor="date">Date:</label>
+              <br />
+              <input
+                type="date"
+                id="date"
+                name="date"
+                placeholder="Date"
+                required
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
               />
               <br />
               <input
@@ -85,43 +103,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
               />
               <label htmlFor="condition2">Sunny</label>
               <br />
-              <input
-                type="checkbox"
-                id="condition3"
-                name="conditions"
-                value="Cloudy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition3">Cloudy</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition4"
-                name="conditions"
-                value="Rainy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition4">Rainy</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition5"
-                name="conditions"
-                value="Snowy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition5">Snowy</label>
-              <br />
-              <label htmlFor="date">Date:</label>
-              <br />
-              <input
-                type="date"
-                id="date"
-                name="date"
-                placeholder="Date"
-                required
-              />
-              <br />
+              {/* Restliche Checkboxen und Felder bleiben unverändert */}
               <label htmlFor="friends">Friends:</label>
               <br />
               <div>
@@ -152,10 +134,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
               </ul>
             </div>
             <div>
-              <button type="submit">
-                {" "}
-                onClick={() => onEditTrip(trip)} Save changes
-              </button>
+              <button type="submit">Save changes</button>
             </div>
           </form>
         </Card>

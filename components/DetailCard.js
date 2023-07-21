@@ -12,6 +12,7 @@ export default function DetailCard({ campingTrip }) {
       <Container>
         <Card>
           <h2>{campingTrip.location}</h2>
+          <h2>{campingTrip.date}</h2>
           <h3>Conditions:</h3>
           {campingTrip.conditions.length > 0 ? (
             <ul>

@@ -17,7 +17,11 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                 <Card>
                   <h2>{trip.location}</h2>
                   <p>Date: {trip.date}</p>
-                  <p>Friends: {trip.friends.join(", ")}</p>
+                  {trip.friends.length > 0 ? (
+                    <p>Friends: {trip.friends.join(", ")}</p>
+                  ) : (
+                    <p>no friends added</p>
+                  )}
                 </Card>
               </Link>
               <DeleteTripButton tripId={trip.id} onDeleteTrip={onDeleteTrip} />
