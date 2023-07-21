@@ -15,12 +15,10 @@ export default function EditFormPage({ campingTrips, onEditTrip }) {
   }
 
   return (
-    <>
-      <EditCard
-        campingTrips={campingTrips}
-        currentTrip={currentTrip}
-        onEditTrip={onEditTrip}
-      />
-    </>
+    <EditCard
+      campingTrips={campingTrips}
+      currentTrip={currentTrip}
+      onEditTrip={onEditTrip}
+    />
   );
 }

@@ -9,9 +9,5 @@ export default function DetailPage({ campingTrips }) {
   }
   const currentTrip = campingTrips.find((campingTrip) => campingTrip.id === id);
 
-  return (
-    <>
-      <DetailCard campingTrip={currentTrip} />
-    </>
-  );
+  return <DetailCard campingTrip={currentTrip} />;
 }

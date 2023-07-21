@@ -25,7 +25,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                 </Card>
               </Link>
               <DeleteTripButton tripId={trip.id} onDeleteTrip={onDeleteTrip} />
-              <Link href={`/editformpage/${trip.id}`} key={trip.id}>
+              <Link href={`/editformpage/${trip.id}`}>
                 <button>Edit</button>
               </Link>
             </StyledList>
