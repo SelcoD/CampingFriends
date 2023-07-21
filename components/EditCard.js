@@ -1,24 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 
 export default function EditCard({ currentTrip, onEditTrip }) {
-  const [location, setLocation] = useState(currentTrip.location || "");
-  const [date, setDate] = useState(currentTrip.date || "");
-  const [conditions, setConditions] = useState(currentTrip.conditions || []);
-  const [friends, setFriends] = useState(currentTrip.friends || []);
+  const [conditions, setConditions] = useState([]);
+  const [friends, setFriends] = useState([]);
   const [inputFriend, setInputFriend] = useState("");
 
   const router = useRouter();
 
+  // Liste von möglichen Conditions (alle verfügbaren Conditions)
+  const allConditions = [
+    "Good weather",
+    "Sunny",
+    "Cloudy",
+    "Rainy",
+    "Snowy",
+    // Fügen Sie hier weitere Conditions hinzu, wenn benötigt
+  ];
+
+  useEffect(() => {
+    // Setzen der aktuellen Conditions des Trips in den State
+    setConditions(currentTrip.conditions || []);
+    // Setzen der aktuellen Freunde des Trips in den State
+    setFriends(currentTrip.friends || []);
+  }, [currentTrip]);
+
   function handleConditionChange(event) {
     const condition = event.target.value;
     if (event.target.checked) {
+      // Wenn die Checkbox aktiviert wird, fügen Sie die Condition hinzu, wenn sie noch nicht vorhanden ist
       if (!conditions.includes(condition)) {
         setConditions((prevConditions) => [...prevConditions, condition]);
       }
     } else {
+      // Wenn die Checkbox deaktiviert wird, entfernen Sie die Condition, falls sie vorhanden ist
       setConditions((prevConditions) =>
         prevConditions.filter((_condition) => _condition !== condition)
       );
@@ -68,11 +85,25 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 id="location"
                 name="location"
                 placeholder="Location"
+                defaultValue={currentTrip.location}
                 required
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
               />
               <br />
+              {/* Anzeigen aller Conditions mit Checkboxen */}
+              {allConditions.map((condition) => (
+                <div key={condition}>
+                  <input
+                    type="checkbox"
+                    id={`condition-${condition}`}
+                    name="conditions"
+                    value={condition}
+                    onChange={handleConditionChange}
+                    checked={conditions.includes(condition)}
+                  />
+                  <label htmlFor={`condition-${condition}`}>{condition}</label>
+                  <br />
+                </div>
+              ))}
               <label htmlFor="date">Date:</label>
               <br />
               <input
@@ -80,30 +111,10 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 id="date"
                 name="date"
                 placeholder="Date"
+                defaultValue={currentTrip.date}
                 required
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
               />
               <br />
-              <input
-                type="checkbox"
-                id="condition1"
-                name="conditions"
-                value="Good weather"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="conditin1">Good weather</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition2"
-                name="conditions"
-                value="Sunny"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition2">Sunny</label>
-              <br />
-              {/* Restliche Checkboxen und Felder bleiben unverändert */}
               <label htmlFor="friends">Friends:</label>
               <br />
               <div>
