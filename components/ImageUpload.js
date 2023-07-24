@@ -29,7 +29,7 @@ export default function ImageUpload() {
       </form>
       <div>
         {tripImages.map((tripImage) => (
-          <image
+          <Image
             key={tripImage.id}
             src={tripImage.src}
             width={tripImage.width}

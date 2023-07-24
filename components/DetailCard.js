@@ -33,16 +33,18 @@ export default function DetailCard({ campingTrip }) {
           ) : (
             <p>no friends added</p>
           )}
-          {/* <h3>Images:</h3>
+          <h3>Images:</h3>
           {campingTrip.images.length > 0 ? (
             <ul>
-              {campingTrip.images.map((image) => {
-                return <StyledList key={image}>{image}</StyledList>;
-              })}
+              {campingTrip.images.map((image, index) => (
+                <StyledList key={index}>
+                  <img src={image.src} alt={`Trip Image ${index + 1}`} />
+                </StyledList>
+              ))}
             </ul>
           ) : (
             <p>no images added</p>
-          )} */}
+          )}
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>
