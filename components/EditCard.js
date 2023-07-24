@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
+import ImageUpload from "./ImageUpload";
 
 export default function EditCard({ currentTrip, onEditTrip }) {
   const [conditions, setConditions] = useState([]);
@@ -144,6 +145,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 ))}
               </ul>
             </div>
+            <ImageUpload />
             <div>
               <button type="submit">Save changes</button>
             </div>

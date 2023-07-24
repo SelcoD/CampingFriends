@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
+import ImageUpload from "./ImageUpload";
 
 export default function FormCard({ onAddTrip }) {
   const [conditions, setConditions] = useState([]);
@@ -150,6 +151,7 @@ export default function FormCard({ onAddTrip }) {
                 ))}
               </ul>
             </div>
+            <ImageUpload />
             <div>
               <button type="submit">Add to Trip</button>
             </div>
