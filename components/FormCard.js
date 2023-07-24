@@ -151,11 +151,12 @@ export default function FormCard({ onAddTrip }) {
                 ))}
               </ul>
             </div>
-            <ImageUpload />
+
             <div>
               <button type="submit">Add to Trip</button>
             </div>
           </form>
+          <ImageUpload />
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>
