@@ -90,7 +90,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 required
               />
               <br />
-              {/* Anzeigen aller Conditions mit Checkboxen */}
+
               {allConditions.map((condition) => (
                 <div key={condition}>
                   <input

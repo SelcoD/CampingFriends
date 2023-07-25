@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Image from "next/image";
+import styled from "styled-components";
 
-export default function ImageUpload(Image) {
+export default function ImageUpload() {
   const [tripImages, setTripImages] = useState([]);
 
   async function handleSubmit(event) {
@@ -29,7 +31,7 @@ export default function ImageUpload(Image) {
       </form>
       <div>
         {tripImages.map((tripImage) => (
-          <Image
+          <StyledImage
             key={tripImage.id}
             src={tripImage.src}
             width={tripImage.width}
@@ -41,3 +43,11 @@ export default function ImageUpload(Image) {
     </div>
   );
 }
+
+const StyledImage = styled(Image)`
+  border-radius: 0.5rem;
+  width: 50vw;
+  object-fit: contain;
+  height: auto;
+  border-color: aliceblue;
+`;
