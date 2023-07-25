@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Container, Card, Header, Footer } from "../styles/styles";
 import Link from "next/link";
 import ImageUpload from "./ImageUpload";
+import styled from "styled-components";
 
 export default function FormCard({ onAddTrip }) {
   const [conditions, setConditions] = useState([]);
@@ -160,7 +161,7 @@ export default function FormCard({ onAddTrip }) {
               </div>
               <ul>
                 {friends.map((friend, index) => (
-                  <li key={index}>
+                  <StyledList key={index}>
                     {friend}
                     <button
                       type="button"
@@ -168,7 +169,7 @@ export default function FormCard({ onAddTrip }) {
                     >
                       Delete
                     </button>
-                  </li>
+                  </StyledList>
                 ))}
               </ul>
             </div>
@@ -187,3 +188,7 @@ export default function FormCard({ onAddTrip }) {
     </>
   );
 }
+
+const StyledList = styled.ul`
+  list-style-type: none;
+`;
