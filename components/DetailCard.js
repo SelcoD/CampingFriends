@@ -38,7 +38,7 @@ export default function DetailCard({ campingTrip }) {
             <ul>
               {campingTrip.images.map((image, index) => (
                 <StyledList key={index}>
-                  <img src={image.src} alt={`Trip Image ${index + 1}`} />
+                  <image src={image.src} alt={`Trip Image ${index + 1}`} />
                 </StyledList>
               ))}
             </ul>

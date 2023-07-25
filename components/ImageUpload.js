@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ImageUpload() {
+export default function ImageUpload(Image) {
   const [tripImages, setTripImages] = useState([]);
 
   async function handleSubmit(event) {
