@@ -13,7 +13,7 @@ export const config = {
     bodyParser: false,
   },
 };
-export default async function hanlder(request, response) {
+export default async function handler(request, response) {
   if (!request.method === "POST") {
     response.status(405).json({ error: "Method not allowed" });
     return;
