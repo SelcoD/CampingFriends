@@ -33,9 +33,6 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
           <Link href="/formpage">Add a new trip</Link>
         </Container>
       </ul>
-      {/* <Footer>
-        <p>FOOTER</p>
-      </Footer> */}
     </>
   );
 }
