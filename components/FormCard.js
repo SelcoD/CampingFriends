@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Container, Card, Header, Footer } from "../styles/styles";
+import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
 import ImageUpload from "./ImageUpload";
 import styled from "styled-components";
@@ -159,7 +159,8 @@ export default function FormCard({ onAddTrip }) {
               </div>
               <ul>
                 {friends.map((friend, index) => (
-                  <StyledList key={index}>
+                  <StyledList key={`${friend}-${index}`}>
+                    {" "}
                     {friend}
                     <button
                       type="button"

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Container, Card, Header, Footer } from "../styles/styles";
+import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
 import ImageUpload from "./ImageUpload";
 

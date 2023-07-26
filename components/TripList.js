@@ -1,4 +1,4 @@
-import { Container, Card, Header, Footer } from "../styles/styles";
+import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
 import DeleteTripButton from "./DeleteTripButton";

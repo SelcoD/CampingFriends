@@ -1,10 +1,9 @@
-import { Container, Card, Header, Footer } from "../styles/styles";
+import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 
 export default function DetailCard({ campingTrip }) {
-  console.log("campingTrip:", campingTrip);
   return (
     <>
       <Header>
