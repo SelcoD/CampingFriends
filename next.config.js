@@ -3,16 +3,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: "https",
-  //       hostname: "res.cloudinary.com",
-  //       port: "",
-  //       pathname: "**",
-  //     },
-  //   ],
-  // },
+
   images: {
     domains: ["res.cloudinary.com"],
   },
