@@ -9,7 +9,6 @@ export default function FormCard({ onAddTrip }) {
   const [conditions, setConditions] = useState([]);
   const [friends, setFriends] = useState([]);
   const [inputFriend, setInputFriend] = useState("");
-  const [uploadedImages, setUploadedImages] = useState([]); // Add state for uploaded images
 
   const router = useRouter();
 
@@ -36,25 +35,6 @@ export default function FormCard({ onAddTrip }) {
   function handleDeleteFriend(friendToDelete) {
     setFriends(friends.filter((friend) => friend !== friendToDelete));
   }
-  async function handleImageUpload(event) {
-    // Handle the image upload here
-    const formData = new FormData();
-    formData.append("image", event.target.files[0]);
-
-    try {
-      const response = await fetch("../api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const newImage = await response.json();
-        setUploadedImages([...uploadedImages, newImage]);
-      }
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -64,7 +44,6 @@ export default function FormCard({ onAddTrip }) {
 
     data.friends = friends;
     data.conditions = conditions;
-    data.images = uploadedImages;
 
     onAddTrip(data);
     router.push("/");
@@ -96,7 +75,7 @@ export default function FormCard({ onAddTrip }) {
                 value="Good weather"
                 onChange={handleConditionChange}
               />
-              <label htmlFor="conditin1">Good weather</label>
+              <label htmlFor="condition1">Good weather</label>
               <br />
               <input
                 type="checkbox"
