@@ -2,29 +2,10 @@ import { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function ImageUpload() {
-  const [tripImages, setTripImages] = useState([]);
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    console.log("somehow send formData to /api/upload");
-
-    const response = await fetch("../api/upload", {
-      method: "POST",
-      body: formData,
-    });
-
-    if (response.ok) {
-      const newImage = await response.json();
-      setTripImages([...tripImages, newImage]);
-    }
-  }
-
+export default function ImageUpload({ onSubmit, tripImages }) {
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <label htmlFor="image-upload">Picture</label>
         <input type="file" name="image" id="image-upload" />
         <button type="submit">Upload</button>

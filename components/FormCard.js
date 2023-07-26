@@ -9,6 +9,7 @@ export default function FormCard({ onAddTrip }) {
   const [conditions, setConditions] = useState([]);
   const [friends, setFriends] = useState([]);
   const [inputFriend, setInputFriend] = useState("");
+  const [tripImages, setTripImages] = useState([]);
 
   const router = useRouter();
 
@@ -28,6 +29,22 @@ export default function FormCard({ onAddTrip }) {
     setInputFriend("");
   }
 
+  async function handleUploadImage(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const response = await fetch("../api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      const newImage = await response.json();
+      setTripImages([...tripImages, newImage]);
+    }
+  }
+
   function handleInputChange(event) {
     setInputFriend(event.target.value);
   }
@@ -45,7 +62,9 @@ export default function FormCard({ onAddTrip }) {
     data.friends = friends;
     data.conditions = conditions;
 
-    onAddTrip(data);
+    const dataWithImages = { ...data, tripImages };
+
+    onAddTrip(dataWithImages);
     router.push("/");
   };
 
@@ -157,7 +176,7 @@ export default function FormCard({ onAddTrip }) {
               <button type="submit">Add to Trip</button>
             </div>
           </form>
-          <ImageUpload />
+          <ImageUpload onSubmit={handleUploadImage} tripImages={tripImages} />
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>

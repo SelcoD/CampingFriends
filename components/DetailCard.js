@@ -1,9 +1,10 @@
 import { Container, Card, Header, Footer } from "../styles/styles";
-
 import Link from "next/link";
 import styled from "styled-components";
+import Image from "next/image";
 
 export default function DetailCard({ campingTrip }) {
+  console.log("campingTrip:", campingTrip);
   return (
     <>
       <Header>
@@ -34,11 +35,19 @@ export default function DetailCard({ campingTrip }) {
             <p>no friends added</p>
           )}
           <h3>Images:</h3>
-          {campingTrip.images.length > 0 ? (
+          {campingTrip.tripImages.length > 0 ? (
             <ul>
-              {campingTrip.images.map((image, index) => (
+              {campingTrip.tripImages.map((image, index) => (
                 <StyledList key={index}>
-                  <image src={image.src} alt={`Trip Image ${index + 1}`} />
+                  {console.log("IMAGESRC", image.src)}
+                  <Image
+                    src={
+                      "https://res.cloudinary.com/ddnmtgwz0/image/upload/v1690364650/w7uetaplo2nekgv6gc3e.jpg"
+                    }
+                    width={image.width}
+                    height={image.height}
+                    alt={`Trip Image ${index + 1}`}
+                  />
                 </StyledList>
               ))}
             </ul>
