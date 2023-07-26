@@ -39,11 +39,8 @@ export default function DetailCard({ campingTrip }) {
             <ul>
               {campingTrip.tripImages.map((image, index) => (
                 <StyledList key={index}>
-                  {console.log("IMAGESRC", image.src)}
                   <Image
-                    src={
-                      "https://res.cloudinary.com/ddnmtgwz0/image/upload/v1690364650/w7uetaplo2nekgv6gc3e.jpg"
-                    }
+                    src={image.src}
                     width={image.width}
                     height={image.height}
                     alt={`Trip Image ${index + 1}`}
