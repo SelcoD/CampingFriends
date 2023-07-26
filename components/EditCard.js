@@ -144,9 +144,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                   </li>
                 ))}
               </ul>
-            </div>
-            <ImageUpload />
-            <div>
+
               <button type="submit">Save changes</button>
             </div>
           </form>
