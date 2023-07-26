@@ -27,7 +27,7 @@ export default function ImageUpload() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="image-upload">Picture</label>
         <input type="file" name="image" id="image-upload" />
-        <button type="submit">Submit</button>
+        <button type="submit">Upload</button>
       </form>
       <div>
         {tripImages.map((tripImage) => (
