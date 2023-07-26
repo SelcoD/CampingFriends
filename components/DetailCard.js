@@ -54,9 +54,9 @@ export default function DetailCard({ campingTrip }) {
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>
-      <Footer>
+      {/* <Footer>
         <p>FOOTER</p>
-      </Footer>
+      </Footer> */}
     </>
   );
 }

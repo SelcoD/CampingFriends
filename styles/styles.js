@@ -33,12 +33,14 @@ export const Header = styled.header`
   justify-content: center;
 `;
 
-export const Footer = styled.footer`
-  padding: 20px;
-  color: black;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+// export const Footer = styled.footer`
+//   padding: 20px;
+//   color: black;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// `;
+
+export const UploadSection = styled.div;
