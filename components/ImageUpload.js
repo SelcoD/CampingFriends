@@ -1,23 +1,33 @@
-export default function ImageUpload() {
-  function handleSubmit(event) {
-    event.preventDefault();
+import Image from "next/image";
+import styled from "styled-components";
 
-    const formData = new FormData(event.target);
-    console.log("somehow send formData to /api/upload");
-
-    const response = fetch("../api/upload", {
-      method: "POST",
-      body: formData,
-    });
-  }
-
+export default function ImageUpload({ onSubmit, tripImages }) {
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <label htmlFor="image-upload">Picture</label>
         <input type="file" name="image" id="image-upload" />
-        <button type="submit">Submit</button>
+        <button type="submit">Upload</button>
       </form>
+      <div>
+        {tripImages.map((tripImage) => (
+          <StyledImage
+            key={tripImage.id}
+            src={tripImage.src}
+            width={tripImage.width}
+            height={tripImage.height}
+            alt="Trip image"
+          />
+        ))}
+      </div>
     </div>
   );
 }
+
+const StyledImage = styled(Image)`
+  border-radius: 0.5rem;
+  width: 50vw;
+  object-fit: contain;
+  height: auto;
+  border-color: aliceblue;
+`;

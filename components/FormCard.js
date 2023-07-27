@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Container, Card, Header, Footer } from "../styles/styles";
+import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
+import ImageUpload from "./ImageUpload";
+import styled from "styled-components";
 
 export default function FormCard({ onAddTrip }) {
   const [conditions, setConditions] = useState([]);
   const [friends, setFriends] = useState([]);
   const [inputFriend, setInputFriend] = useState("");
+  const [tripImages, setTripImages] = useState([]);
 
   const router = useRouter();
 
@@ -26,6 +29,22 @@ export default function FormCard({ onAddTrip }) {
     setInputFriend("");
   }
 
+  async function handleUploadImage(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const response = await fetch("../api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      const newImage = await response.json();
+      setTripImages([...tripImages, newImage]);
+    }
+  }
+
   function handleInputChange(event) {
     setInputFriend(event.target.value);
   }
@@ -43,7 +62,9 @@ export default function FormCard({ onAddTrip }) {
     data.friends = friends;
     data.conditions = conditions;
 
-    onAddTrip(data);
+    const dataWithImages = { ...data, tripImages };
+
+    onAddTrip(dataWithImages);
     router.push("/");
   };
 
@@ -73,7 +94,7 @@ export default function FormCard({ onAddTrip }) {
                 value="Good weather"
                 onChange={handleConditionChange}
               />
-              <label htmlFor="conditin1">Good weather</label>
+              <label htmlFor="condition1">Good weather</label>
               <br />
               <input
                 type="checkbox"
@@ -138,7 +159,8 @@ export default function FormCard({ onAddTrip }) {
               </div>
               <ul>
                 {friends.map((friend, index) => (
-                  <li key={index}>
+                  <StyledList key={`${friend}-${index}`}>
+                    {" "}
                     {friend}
                     <button
                       type="button"
@@ -146,20 +168,23 @@ export default function FormCard({ onAddTrip }) {
                     >
                       Delete
                     </button>
-                  </li>
+                  </StyledList>
                 ))}
               </ul>
             </div>
+
             <div>
               <button type="submit">Add to Trip</button>
             </div>
           </form>
+          <ImageUpload onSubmit={handleUploadImage} tripImages={tripImages} />
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>
-      <Footer>
-        <p>FOOTER</p>
-      </Footer>
     </>
   );
 }
+
+const StyledList = styled.ul`
+  list-style-type: none;
+`;

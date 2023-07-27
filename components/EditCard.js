@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Container, Card, Header, Footer } from "../styles/styles";
+import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
 
 export default function EditCard({ currentTrip, onEditTrip }) {
@@ -89,7 +89,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 required
               />
               <br />
-              {/* Anzeigen aller Conditions mit Checkboxen */}
+
               {allConditions.map((condition) => (
                 <div key={condition}>
                   <input
@@ -143,17 +143,13 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div>
+
               <button type="submit">Save changes</button>
             </div>
           </form>
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>
-      <Footer>
-        <p>FOOTER</p>
-      </Footer>
     </>
   );
 }

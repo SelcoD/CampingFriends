@@ -1,13 +1,13 @@
-import { Container, Card, Header, Footer } from "../styles/styles";
-
+import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
+import Image from "next/image";
 
 export default function DetailCard({ campingTrip }) {
   return (
     <>
       <Header>
-        <h1>Check the details of your trips</h1>
+        <h1>Check the details of your trip</h1>
       </Header>
       <Container>
         <Card>
@@ -33,12 +33,26 @@ export default function DetailCard({ campingTrip }) {
           ) : (
             <p>no friends added</p>
           )}
+          <h3>Images:</h3>
+          {campingTrip.tripImages.length > 0 ? (
+            <ul>
+              {campingTrip.tripImages.map((image, index) => (
+                <StyledList key={index}>
+                  <Image
+                    src={image.src}
+                    width={image.width}
+                    height={image.height}
+                    alt={`Trip Image ${index + 1}`}
+                  />
+                </StyledList>
+              ))}
+            </ul>
+          ) : (
+            <p>no images added</p>
+          )}
         </Card>
         <Link href="/">Go to List Page</Link>
       </Container>
-      <Footer>
-        <p>FOOTER</p>
-      </Footer>
     </>
   );
 }
