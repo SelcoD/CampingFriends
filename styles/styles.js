@@ -32,3 +32,15 @@ export const Header = styled.main`
   align-items: center;
   justify-content: center;
 `;
+
+export const CenteredLinkWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+`;
+
+export const CenteredLink = styled.a`
+  color: blue;
+  text-decoration: none;
+  font-size: 18px;
+`;

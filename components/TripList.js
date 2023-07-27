@@ -1,4 +1,10 @@
-import { Container, Card, Header } from "../styles/styles";
+import {
+  Container,
+  Card,
+  Header,
+  CenteredLinkWrapper,
+  CenteredLink,
+} from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
 import DeleteTripButton from "./DeleteTripButton";
@@ -9,7 +15,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
       <Header>
         <h1>Organize your Trips</h1>
       </Header>
-      <ul>
+      <StyledList>
         <Container>
           {campingTrips.map((trip) => (
             <StyledList key={trip.id}>
@@ -24,19 +30,26 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                   )}
                 </Card>
               </Link>
-              <DeleteTripButton tripId={trip.id} onDeleteTrip={onDeleteTrip} />
-              <Link href={`/editformpage/${trip.id}`}>
-                <button>Edit</button>
-              </Link>
+              <CenteredLinkWrapper>
+                <DeleteTripButton
+                  tripId={trip.id}
+                  onDeleteTrip={onDeleteTrip}
+                />
+                <Link href={`/editformpage/${trip.id}`}>
+                  <button>Edit</button>
+                </Link>
+              </CenteredLinkWrapper>
             </StyledList>
           ))}
-          <Link href="/formpage">Add a new trip</Link>
+          <CenteredLinkWrapper>
+            <CenteredLink href="/formpage">Add a new trip</CenteredLink>
+          </CenteredLinkWrapper>
         </Container>
-      </ul>
+      </StyledList>
     </>
   );
 }
 
-const StyledList = styled.ul`
+const StyledList = styled.li`
   list-style-type: none;
 `;

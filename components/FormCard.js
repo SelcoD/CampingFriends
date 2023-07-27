@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Container, Card, Header } from "../styles/styles";
+import {
+  Container,
+  Card,
+  Header,
+  CenteredLinkWrapper,
+  CenteredLink,
+} from "../styles/styles";
 import Link from "next/link";
 import ImageUpload from "./ImageUpload";
 import styled from "styled-components";
@@ -71,10 +77,11 @@ export default function FormCard({ onAddTrip }) {
   return (
     <>
       <Header>
-        <h1>Add a new trip to your list</h1>
+        <h1>Create a new trip </h1>
       </Header>
       <Container>
         <Card>
+          <ImageUpload onSubmit={handleUploadImage} tripImages={tripImages} />
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="location">Location:</label>
@@ -177,9 +184,10 @@ export default function FormCard({ onAddTrip }) {
               <button type="submit">Add to Trip</button>
             </div>
           </form>
-          <ImageUpload onSubmit={handleUploadImage} tripImages={tripImages} />
         </Card>
-        <Link href="/">Go to List Page</Link>
+        <CenteredLinkWrapper>
+          <CenteredLink href="/">Go to List Page</CenteredLink>
+        </CenteredLinkWrapper>
       </Container>
     </>
   );
