@@ -32,5 +32,3 @@ export const Header = styled.header`
   align-items: center;
   justify-content: center;
 `;
-
-export const UploadSection = styled.div;

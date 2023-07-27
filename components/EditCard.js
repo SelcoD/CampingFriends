@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Container, Card, Header } from "../styles/styles";
 import Link from "next/link";
-import ImageUpload from "./ImageUpload";
 
 export default function EditCard({ currentTrip, onEditTrip }) {
   const [conditions, setConditions] = useState([]);
