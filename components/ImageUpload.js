@@ -5,8 +5,11 @@ export default function ImageUpload({ onSubmit, tripImages }) {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <label htmlFor="image-upload">Picture</label>
+        <label htmlFor="image-upload">Picture:</label>
+        <br />
         <input type="file" name="image" id="image-upload" />
+        <br />
+        <br />
         <button type="submit">Upload</button>
       </form>
       <div>
@@ -31,3 +34,7 @@ const StyledImage = styled(Image)`
   height: auto;
   border-color: aliceblue;
 `;
+
+// const StyledImageUpload = styled.form`
+//   text-align: start;
+// `;
