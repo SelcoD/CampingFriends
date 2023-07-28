@@ -44,7 +44,17 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
           ))}
           <FooterContainer>
             <CenteredLink href="/formpage">
-              <button>Add a new trip</button>
+              <AddTripButton>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  viewBox="0 -960 960 960"
+                  width="16"
+                >
+                  <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z" />
+                </svg>
+                Add a new trip
+              </AddTripButton>
             </CenteredLink>
           </FooterContainer>
         </Container>
@@ -65,4 +75,23 @@ const FooterContainer = styled.footer`
   background: linear-gradient(to right, #e66465, #9198e5);
   padding: 10px;
   text-align: center;
+`;
+
+const AddTripButton = styled.button`
+  background-color: #e66465;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  gap: none;
+  svg {
+    fill: black;
+    width: 16px;
+    height: 16px;
+  }
 `;
