@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import {
-  Container,
-  Card,
-  Header,
-  CenteredLinkWrapper,
-  CenteredLink,
-} from "../styles/styles";
-import Link from "next/link";
+import { Container, Card, Header, CenteredLink } from "../styles/styles";
+import { styled } from "styled-components";
 
 export default function EditCard({ currentTrip, onEditTrip }) {
   const [conditions, setConditions] = useState([]);
@@ -16,32 +10,20 @@ export default function EditCard({ currentTrip, onEditTrip }) {
 
   const router = useRouter();
 
-  // Liste von möglichen Conditions (alle verfügbaren Conditions)
-  const allConditions = [
-    "Good weather",
-    "Sunny",
-    "Cloudy",
-    "Rainy",
-    "Snowy",
-    // Fügen Sie hier weitere Conditions hinzu, wenn benötigt
-  ];
+  const allConditions = ["Good weather", "Sunny", "Cloudy", "Rainy", "Snowy"];
 
   useEffect(() => {
-    // Setzen der aktuellen Conditions des Trips in den State
     setConditions(currentTrip.conditions || []);
-    // Setzen der aktuellen Freunde des Trips in den State
     setFriends(currentTrip.friends || []);
   }, [currentTrip]);
 
   function handleConditionChange(event) {
     const condition = event.target.value;
     if (event.target.checked) {
-      // Wenn die Checkbox aktiviert wird, fügen Sie die Condition hinzu, wenn sie noch nicht vorhanden ist
       if (!conditions.includes(condition)) {
         setConditions((prevConditions) => [...prevConditions, condition]);
       }
     } else {
-      // Wenn die Checkbox deaktiviert wird, entfernen Sie die Condition, falls sie vorhanden ist
       setConditions((prevConditions) =>
         prevConditions.filter((_condition) => _condition !== condition)
       );
@@ -133,7 +115,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                   onChange={handleInputChange}
                 />
                 <button type="button" onClick={handleAddFriend}>
-                  Add
+                  +
                 </button>
               </div>
               <ul>
@@ -144,7 +126,14 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                       type="button"
                       onClick={() => handleDeleteFriend(friend)}
                     >
-                      Delete
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="15"
+                        viewBox="0 -960 960 960"
+                        width="15"
+                      >
+                        <path d="M261-120q-24.75 0-42.375-17.625T201-180v-570h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438v-570ZM367-266h60v-399h-60v399Zm166 0h60v-399h-60v399ZM261-750v570-570Z" />
+                      </svg>
                     </button>
                   </li>
                 ))}
@@ -154,10 +143,38 @@ export default function EditCard({ currentTrip, onEditTrip }) {
             </div>
           </form>
         </Card>
-        <CenteredLinkWrapper>
-          <CenteredLink href="/">Go to List Page</CenteredLink>
-        </CenteredLinkWrapper>
+        <FooterContainer>
+          <CenteredLink href="/">
+            <StyledListPageButton>Back to List Page</StyledListPageButton>
+          </CenteredLink>
+        </FooterContainer>
       </Container>
     </>
   );
 }
+
+const FooterContainer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #e66465, #9198e5);
+  padding: 10px;
+  text-align: center;
+`;
+
+const StyledListPageButton = styled.button`
+  background-color: #e66465;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  gap: none;
+  svg {
+    fill: black;
+    width: 16px;
+    height: 16px;
+  }
+`;

@@ -191,23 +191,6 @@ export default function FormCard({ onAddTrip }) {
     </>
   );
 }
-const StyledAddFriendButton = styled.button`
-  background-color: #e66465;
-  color: black;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  svg {
-    fill: black;
-    width: 16px;
-    height: 16px;
-  }
-`;
 
 const StyledListPageButton = styled.button`
   background-color: #e66465;
