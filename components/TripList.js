@@ -8,6 +8,7 @@ import {
 import Link from "next/link";
 import styled from "styled-components";
 import DeleteTripButton from "./DeleteTripButton";
+import EditTripButton from "./EditTripButton";
 
 export default function TripList({ campingTrips, onDeleteTrip }) {
   return (
@@ -36,14 +37,16 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                   onDeleteTrip={onDeleteTrip}
                 />
                 <Link href={`/editformpage/${trip.id}`}>
-                  <button>Edit</button>
+                  <EditTripButton>Edit</EditTripButton>
                 </Link>
               </CenteredLinkWrapper>
             </StyledList>
           ))}
-          <CenteredLinkWrapper>
-            <CenteredLink href="/formpage">Add a new trip</CenteredLink>
-          </CenteredLinkWrapper>
+          <FooterContainer>
+            <CenteredLink href="/formpage">
+              <button>Add a new trip</button>
+            </CenteredLink>
+          </FooterContainer>
         </Container>
       </StyledList>
     </>
@@ -52,4 +55,14 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
 
 const StyledList = styled.li`
   list-style-type: none;
+`;
+
+const FooterContainer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #e66465, #9198e5);
+  padding: 10px;
+  text-align: center;
 `;
