@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  Container,
-  Card,
-  Header,
-  CenteredLinkWrapper,
-  CenteredLink,
-} from "../styles/styles";
-import Link from "next/link";
+import { Container, Card, Header, CenteredLink } from "../styles/styles";
 import ImageUpload from "./ImageUpload";
 import styled from "styled-components";
 
@@ -82,117 +75,159 @@ export default function FormCard({ onAddTrip }) {
       <Container>
         <Card>
           <ImageUpload onSubmit={handleUploadImage} tripImages={tripImages} />
+
           <form onSubmit={handleSubmit}>
+            <label htmlFor="location">Location:</label>
+            <br />
+            <input
+              type="text"
+              id="location"
+              name="location"
+              placeholder="Location"
+              required
+            />
+            <br />
+            <input
+              type="checkbox"
+              id="condition1"
+              name="conditions"
+              value="Good weather"
+              onChange={handleConditionChange}
+            />
+            <label htmlFor="condition1">Good weather</label>
+            <br />
+            <input
+              type="checkbox"
+              id="condition2"
+              name="conditions"
+              value="Sunny"
+              onChange={handleConditionChange}
+            />
+            <label htmlFor="condition2">Sunny</label>
+            <br />
+            <input
+              type="checkbox"
+              id="condition3"
+              name="conditions"
+              value="Cloudy"
+              onChange={handleConditionChange}
+            />
+            <label htmlFor="condition3">Cloudy</label>
+            <br />
+            <input
+              type="checkbox"
+              id="condition4"
+              name="conditions"
+              value="Rainy"
+              onChange={handleConditionChange}
+            />
+            <label htmlFor="condition4">Rainy</label>
+            <br />
+            <input
+              type="checkbox"
+              id="condition5"
+              name="conditions"
+              value="Snowy"
+              onChange={handleConditionChange}
+            />
+            <label htmlFor="condition5">Snowy</label>
+            <br />
+            <label htmlFor="date">Date:</label>
+            <br />
+            <input
+              type="date"
+              id="date"
+              name="date"
+              placeholder="Date"
+              required
+            />
+            <br />
+            <label htmlFor="friends">Friends:</label>
+            <br />
             <div>
-              <label htmlFor="location">Location:</label>
-              <br />
               <input
                 type="text"
-                id="location"
-                name="location"
-                placeholder="Location"
-                required
+                id="friends"
+                name="friends"
+                placeholder="Friends"
+                value={inputFriend}
+                onChange={handleInputChange}
               />
-              <br />
-              <input
-                type="checkbox"
-                id="condition1"
-                name="conditions"
-                value="Good weather"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition1">Good weather</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition2"
-                name="conditions"
-                value="Sunny"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition2">Sunny</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition3"
-                name="conditions"
-                value="Cloudy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition3">Cloudy</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition4"
-                name="conditions"
-                value="Rainy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition4">Rainy</label>
-              <br />
-              <input
-                type="checkbox"
-                id="condition5"
-                name="conditions"
-                value="Snowy"
-                onChange={handleConditionChange}
-              />
-              <label htmlFor="condition5">Snowy</label>
-              <br />
-              <label htmlFor="date">Date:</label>
-              <br />
-              <input
-                type="date"
-                id="date"
-                name="date"
-                placeholder="Date"
-                required
-              />
-              <br />
-              <label htmlFor="friends">Friends:</label>
-              <br />
-              <div>
-                <input
-                  type="text"
-                  id="friends"
-                  name="friends"
-                  placeholder="Friends"
-                  value={inputFriend}
-                  onChange={handleInputChange}
-                />
-                <button type="button" onClick={handleAddFriend}>
-                  Add
-                </button>
-              </div>
-              <ul>
-                {friends.map((friend, index) => (
-                  <StyledList key={`${friend}-${index}`}>
-                    {" "}
-                    {friend}
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteFriend(friend)}
-                    >
-                      Delete
-                    </button>
-                  </StyledList>
-                ))}
-              </ul>
+              <button type="button" onClick={handleAddFriend}>
+                +
+              </button>
             </div>
-
+            <StyledList>
+              {friends.map((friend, index) => (
+                <StyledList key={`${friend}-${index}`}>
+                  {friend}
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteFriend(friend)}
+                  >
+                    Delete
+                  </button>
+                </StyledList>
+              ))}
+            </StyledList>
             <div>
               <button type="submit">Add to Trip</button>
             </div>
           </form>
         </Card>
-        <CenteredLinkWrapper>
-          <CenteredLink href="/">Go to List Page</CenteredLink>
-        </CenteredLinkWrapper>
+        <FooterContainer>
+          <CenteredLink href="/">
+            <StyledListPageButton>Back to List Page</StyledListPageButton>
+          </CenteredLink>
+        </FooterContainer>
       </Container>
     </>
   );
 }
+const StyledAddFriendButton = styled.button`
+  background-color: #e66465;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  svg {
+    fill: black;
+    width: 16px;
+    height: 16px;
+  }
+`;
 
-const StyledList = styled.ul`
+const StyledListPageButton = styled.button`
+  background-color: #e66465;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  gap: none;
+  svg {
+    fill: black;
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+const StyledList = styled.li`
   list-style-type: none;
+`;
+
+const FooterContainer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #e66465, #9198e5);
+  padding: 10px;
+  text-align: center;
 `;

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 0 auto;
+  margin: 10px;
   max-width: 800px;
-  padding: 20px;
 `;
 
 export const Card = styled.article`
   background-color: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 0px;
+  padding: 10px;
   margin-bottom: 10px;
   width: 100%;
   max-width: 800px;
@@ -19,8 +18,6 @@ export const Card = styled.article`
   text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const Header = styled.main`

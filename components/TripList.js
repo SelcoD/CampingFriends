@@ -21,7 +21,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
           {campingTrips.map((trip) => (
             <StyledList key={trip.id}>
               <Link href={`/detailpage/${trip.id}`}>
-                <Card>
+                <StyledDetailCard>
                   <h2>{trip.location}</h2>
                   <p>Date: {trip.date}</p>
                   {trip.friends.length > 0 ? (
@@ -29,7 +29,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                   ) : (
                     <p>no friends added</p>
                   )}
-                </Card>
+                </StyledDetailCard>
               </Link>
               <CenteredLinkWrapper>
                 <DeleteTripButton
@@ -53,7 +53,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                 >
                   <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z" />
                 </svg>
-                Add a new trip
+                new trip
               </AddTripButton>
             </CenteredLink>
           </FooterContainer>
@@ -85,13 +85,27 @@ const AddTripButton = styled.button`
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   gap: none;
   svg {
     fill: black;
     width: 16px;
     height: 16px;
   }
+`;
+
+const StyledDetailCard = styled.article`
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 `;
