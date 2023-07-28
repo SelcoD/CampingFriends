@@ -4,7 +4,7 @@ const EditButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 50px; /* Adjust the padding to increase the button size */
+  padding: 50px;
   display: flex;
   align-items: center;
   gap: 5px;

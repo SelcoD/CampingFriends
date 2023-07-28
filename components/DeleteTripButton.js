@@ -1,23 +1,17 @@
-// export default function DeleteTripButton({ tripId, onDeleteTrip }) {
-//   const handleDelete = () => {
-//     onDeleteTrip(tripId);
-//   };
-
-//   return <button onClick={handleDelete}>Delete</button>;
-// }
-
 import styled from "styled-components";
 
 const DeleteButton = styled.button`
-  /* Your delete button styles here */
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  svg {
-    fill: black;
-    width: 50px;
-    height: 50px;
-  }
+background-color: transparent;
+border: none;
+cursor: pointer;
+padding: 50px;
+display: flex;
+align-items: center;
+gap: 5px;
+svg {
+  fill: black;
+  width: 50px;
+  height: 50px;
 `;
 
 export default function DeleteTripButton({ tripId, onDeleteTrip }) {
