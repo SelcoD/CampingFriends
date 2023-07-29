@@ -5,7 +5,7 @@ export default function ImageUpload({ onSubmit, tripImages }) {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <label htmlFor="image-upload">Picture:</label>
+        <label htmlFor="image-upload"></label>
         <br />
         <input type="file" name="image" id="image-upload" />
         <button type="submit">Upload</button>

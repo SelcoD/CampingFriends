@@ -31,9 +31,10 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
               <StyledCardLink href={`/detailpage/${trip.id}`}>
                 <StyledDetailCard>
                   <h2>{trip.location}</h2>
-                  <p> {trip.date}</p>
+                  {trip.date}
+                  <br />
                   {trip.friends.length > 0 ? (
-                    <p>with {trip.friends.join(", ")}</p>
+                    <p>with {trip.friends.join(" and ")}</p>
                   ) : (
                     <p>no friends added</p>
                   )}

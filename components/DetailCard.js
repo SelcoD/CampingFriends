@@ -22,7 +22,7 @@ export default function DetailCard({ campingTrip }) {
         />
       </Header>
       <Container>
-        <Card>
+        <StyledDetailCard>
           <article>
             Your trip starts on {campingTrip.date} <br /> to{" "}
             {campingTrip.location}
@@ -64,7 +64,7 @@ export default function DetailCard({ campingTrip }) {
           ) : (
             <p>no images added</p>
           )}
-        </Card>
+        </StyledDetailCard>
         <FooterContainer>
           <CenteredLink href="/">
             <StyledListPageButton>Back to List Page</StyledListPageButton>
@@ -77,4 +77,21 @@ export default function DetailCard({ campingTrip }) {
 
 const StyledList = styled.li`
   list-style-type: none;
+`;
+
+const StyledDetailCard = styled.article`
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 `;

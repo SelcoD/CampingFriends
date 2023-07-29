@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import {
   Container,
-  Card,
   Header,
   CenteredLink,
   StyledImageLogo,
@@ -76,7 +75,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
         />
       </Header>
       <Container>
-        <Card>
+        <StyledEditCard>
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="location">Location:</label>
@@ -155,7 +154,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
               <button type="submit">Save changes</button>
             </div>
           </form>
-        </Card>
+        </StyledEditCard>
         <FooterContainer>
           <CenteredLink href="/">
             <StyledListPageButton>Back to List Page</StyledListPageButton>
@@ -168,4 +167,21 @@ export default function EditCard({ currentTrip, onEditTrip }) {
 
 const StyledList = styled.li`
   list-style-type: none;
+`;
+
+const StyledEditCard = styled.article`
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 `;

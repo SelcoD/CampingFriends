@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import {
   Container,
-  Card,
   Header,
   CenteredLink,
   FooterContainer,
