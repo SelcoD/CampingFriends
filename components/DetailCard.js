@@ -1,5 +1,12 @@
-import { Container, Card, Header } from "../styles/styles";
-import Link from "next/link";
+import {
+  Container,
+  Card,
+  Header,
+  CenteredLink,
+  StyledImageLogo,
+  FooterContainer,
+  StyledListPageButton,
+} from "../styles/styles";
 import styled from "styled-components";
 import Image from "next/image";
 
@@ -7,13 +14,21 @@ export default function DetailCard({ campingTrip }) {
   return (
     <>
       <Header>
-        <h1>Check the details of your trip</h1>
+        <StyledImageLogo
+          src="/logo.png"
+          alt="My Logo"
+          width={200}
+          height={100}
+        />
       </Header>
       <Container>
         <Card>
-          <h2>{campingTrip.location}</h2>
-          <h2>{campingTrip.date}</h2>
-          <h3>Conditions:</h3>
+          <article>
+            Your trip starts on {campingTrip.date} <br /> to{" "}
+            {campingTrip.location}
+          </article>
+          <br />
+          <article>The weather is:</article>
           {campingTrip.conditions.length > 0 ? (
             <ul>
               {campingTrip.conditions.map((condition) => {
@@ -23,7 +38,7 @@ export default function DetailCard({ campingTrip }) {
           ) : (
             <p>no conditions added</p>
           )}
-          <h3>Friends:</h3>
+          <article>Friends:</article>
           {campingTrip.friends.length > 0 ? (
             <ul>
               {campingTrip.friends.map((friend) => {
@@ -33,15 +48,14 @@ export default function DetailCard({ campingTrip }) {
           ) : (
             <p>no friends added</p>
           )}
-          <h3>Images:</h3>
           {campingTrip.tripImages.length > 0 ? (
             <ul>
               {campingTrip.tripImages.map((image, index) => (
                 <StyledList key={index}>
                   <Image
                     src={image.src}
-                    width={image.width}
-                    height={image.height}
+                    width={200}
+                    height={150}
                     alt={`Trip Image ${index + 1}`}
                   />
                 </StyledList>
@@ -51,11 +65,16 @@ export default function DetailCard({ campingTrip }) {
             <p>no images added</p>
           )}
         </Card>
-        <Link href="/">Go to List Page</Link>
+        <FooterContainer>
+          <CenteredLink href="/">
+            <StyledListPageButton>Back to List Page</StyledListPageButton>
+          </CenteredLink>
+        </FooterContainer>
       </Container>
     </>
   );
 }
-const StyledList = styled.ul`
+
+const StyledList = styled.li`
   list-style-type: none;
 `;

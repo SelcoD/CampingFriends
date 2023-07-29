@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Container, Card, Header, CenteredLink } from "../styles/styles";
-import { styled } from "styled-components";
+import {
+  Container,
+  Card,
+  Header,
+  CenteredLink,
+  StyledImageLogo,
+  StyledListPageButton,
+  FooterContainer,
+} from "../styles/styles";
+import styled from "styled-components";
 
 export default function EditCard({ currentTrip, onEditTrip }) {
   const [conditions, setConditions] = useState([]);
@@ -60,7 +68,12 @@ export default function EditCard({ currentTrip, onEditTrip }) {
   return (
     <>
       <Header>
-        <h1>Edit the trip</h1>
+        <StyledImageLogo
+          src="/logo.png"
+          alt="My Logo"
+          width={200}
+          height={100}
+        />
       </Header>
       <Container>
         <Card>
@@ -118,9 +131,9 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                   +
                 </button>
               </div>
-              <ul>
+              <li>
                 {friends.map((friend, index) => (
-                  <li key={index}>
+                  <StyledList key={index}>
                     {friend}
                     <button
                       type="button"
@@ -135,9 +148,9 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                         <path d="M261-120q-24.75 0-42.375-17.625T201-180v-570h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438v-570ZM367-266h60v-399h-60v399Zm166 0h60v-399h-60v399ZM261-750v570-570Z" />
                       </svg>
                     </button>
-                  </li>
+                  </StyledList>
                 ))}
-              </ul>
+              </li>
 
               <button type="submit">Save changes</button>
             </div>
@@ -153,28 +166,6 @@ export default function EditCard({ currentTrip, onEditTrip }) {
   );
 }
 
-const FooterContainer = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to right, #e66465, #9198e5);
-  padding: 10px;
-  text-align: center;
-`;
-
-const StyledListPageButton = styled.button`
-  background-color: #e66465;
-  color: black;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  gap: none;
-  svg {
-    fill: black;
-    width: 16px;
-    height: 16px;
-  }
+const StyledList = styled.li`
+  list-style-type: none;
 `;

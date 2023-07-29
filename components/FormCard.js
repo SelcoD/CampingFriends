@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { Container, Card, Header, CenteredLink } from "../styles/styles";
+import {
+  Container,
+  Card,
+  Header,
+  CenteredLink,
+  FooterContainer,
+  StyledImageLogo,
+  StyledListPageButton,
+} from "../styles/styles";
 import ImageUpload from "./ImageUpload";
 import styled from "styled-components";
 
@@ -70,15 +78,19 @@ export default function FormCard({ onAddTrip }) {
   return (
     <>
       <Header>
-        <h1>Create a new trip </h1>
+        <StyledImageLogo
+          src="/logo.png"
+          alt="My Logo"
+          width={200}
+          height={100}
+        />
       </Header>
       <Container>
-        <Card>
+        <StyledFormCard>
           <ImageUpload onSubmit={handleUploadImage} tripImages={tripImages} />
 
           <form onSubmit={handleSubmit}>
-            <label htmlFor="location">Location:</label>
-            <br />
+            <label htmlFor="location"></label>
             <input
               type="text"
               id="location"
@@ -132,8 +144,7 @@ export default function FormCard({ onAddTrip }) {
             />
             <label htmlFor="condition5">Snowy</label>
             <br />
-            <label htmlFor="date">Date:</label>
-            <br />
+            <label htmlFor="date"></label>
             <input
               type="date"
               id="date"
@@ -142,22 +153,19 @@ export default function FormCard({ onAddTrip }) {
               required
             />
             <br />
-            <label htmlFor="friends">Friends:</label>
-            <br />
-            <div>
-              <input
-                type="text"
-                id="friends"
-                name="friends"
-                placeholder="Friends"
-                value={inputFriend}
-                onChange={handleInputChange}
-              />
-              <button type="button" onClick={handleAddFriend}>
-                +
-              </button>
-            </div>
-            <StyledList>
+            <label htmlFor="friends"></label>
+            <input
+              type="text"
+              id="friends"
+              name="friends"
+              placeholder="Friends"
+              value={inputFriend}
+              onChange={handleInputChange}
+            />
+            <button type="button" onClick={handleAddFriend}>
+              +
+            </button>
+            <ul>
               {friends.map((friend, index) => (
                 <StyledList key={`${friend}-${index}`}>
                   {friend}
@@ -176,12 +184,10 @@ export default function FormCard({ onAddTrip }) {
                   </button>
                 </StyledList>
               ))}
-            </StyledList>
-            <div>
-              <button type="submit">Add to Trip</button>
-            </div>
+            </ul>
+            <StyledButton type="submit">Add to Trip</StyledButton>
           </form>
-        </Card>
+        </StyledFormCard>
         <FooterContainer>
           <CenteredLink href="/">
             <StyledListPageButton>Back to List Page</StyledListPageButton>
@@ -192,8 +198,8 @@ export default function FormCard({ onAddTrip }) {
   );
 }
 
-const StyledListPageButton = styled.button`
-  background-color: #e66465;
+const StyledButton = styled.button`
+  background-color: #19cbe7;
   color: black;
   border: none;
   padding: 10px;
@@ -201,23 +207,25 @@ const StyledListPageButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   gap: none;
-  svg {
-    fill: black;
-    width: 16px;
-    height: 16px;
-  }
 `;
 
 const StyledList = styled.li`
   list-style-type: none;
 `;
 
-const FooterContainer = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to right, #e66465, #9198e5);
+const StyledFormCard = styled.article`
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 `;
