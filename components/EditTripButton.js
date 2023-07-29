@@ -4,7 +4,8 @@ const EditButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  padding: 50px;
+  padding-left: 50px;
+  padding-top: 0px;
   display: flex;
   align-items: center;
   gap: 5px;

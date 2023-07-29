@@ -1,4 +1,23 @@
 import styled from "styled-components";
+import Image from "next/image";
+
+export const StyledUnorderedList = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+`;
+
+export const StyledListPageButton = styled.button`
+  background-color: #19cbe7;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  gap: none;
+`;
 
 export const Container = styled.div`
   margin: 10px;
@@ -18,10 +37,11 @@ export const Card = styled.article`
   text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
 `;
 
 export const Header = styled.main`
-  padding: 20px;
+  padding: 10px;
   color: black;
   width: 100%;
   display: flex;
@@ -37,7 +57,26 @@ export const CenteredLinkWrapper = styled.div`
 `;
 
 export const CenteredLink = styled.a`
-  color: blue;
+  color: black;
   text-decoration: none;
   font-size: 18px;
+`;
+
+export const StyledCardLink = styled.a`
+  text-decoration: none;
+  color: black;
+`;
+
+export const FooterContainer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: none;
+  padding: 10px;
+  text-align: center;
+`;
+
+export const StyledImageLogo = styled(Image)`
+  /* Add any custom styles for the image here if needed */
 `;

@@ -1,9 +1,12 @@
 import {
   Container,
-  Card,
+  StyledCardLink,
   Header,
   CenteredLinkWrapper,
   CenteredLink,
+  FooterContainer,
+  StyledImageLogo,
+  StyledUnorderedList,
 } from "../styles/styles";
 import Link from "next/link";
 import styled from "styled-components";
@@ -14,24 +17,30 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
   return (
     <>
       <Header>
-        <h1>Organize your Trips</h1>
+        <StyledImageLogo
+          src="/logo.png"
+          alt="My Logo"
+          width={200}
+          height={100}
+        />
       </Header>
       <StyledList>
         <Container>
           {campingTrips.map((trip) => (
-            <StyledList key={trip.id}>
-              <Link href={`/detailpage/${trip.id}`}>
+            <StyledUnorderedList key={trip.id}>
+              <StyledCardLink href={`/detailpage/${trip.id}`}>
                 <StyledDetailCard>
                   <h2>{trip.location}</h2>
-                  <p>Date: {trip.date}</p>
+                  {trip.date}
+                  <br />
                   {trip.friends.length > 0 ? (
-                    <p>Friends: {trip.friends.join(", ")}</p>
+                    <p>with {trip.friends.join(" and ")}</p>
                   ) : (
                     <p>no friends added</p>
                   )}
                 </StyledDetailCard>
-              </Link>
-              <CenteredLinkWrapper>
+              </StyledCardLink>
+              <CenteredButtonWrapper>
                 <DeleteTripButton
                   tripId={trip.id}
                   onDeleteTrip={onDeleteTrip}
@@ -39,22 +48,12 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                 <Link href={`/editformpage/${trip.id}`}>
                   <EditTripButton>Edit</EditTripButton>
                 </Link>
-              </CenteredLinkWrapper>
-            </StyledList>
+              </CenteredButtonWrapper>
+            </StyledUnorderedList>
           ))}
           <FooterContainer>
             <CenteredLink href="/formpage">
-              <AddTripButton>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="16"
-                  viewBox="0 -960 960 960"
-                  width="16"
-                >
-                  <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z" />
-                </svg>
-                new trip
-              </AddTripButton>
+              <AddTripButton>+ new trip</AddTripButton>
             </CenteredLink>
           </FooterContainer>
         </Container>
@@ -67,18 +66,8 @@ const StyledList = styled.li`
   list-style-type: none;
 `;
 
-const FooterContainer = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to right, #e66465, #9198e5);
-  padding: 10px;
-  text-align: center;
-`;
-
 const AddTripButton = styled.button`
-  background-color: #e66465;
+  background-color: #19cbe7;
   color: black;
   border: none;
   padding: 10px;
@@ -108,4 +97,10 @@ const StyledDetailCard = styled.article`
   flex-direction: column;
   justify-content: center;
   text-align: center;
+`;
+
+const CenteredButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
 `;
