@@ -29,7 +29,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
           {campingTrips.map((trip) => (
             <StyledUnorderedList key={trip.id}>
               <StyledCardLink href={`/detailpage/${trip.id}`}>
-                <StyledDetailCard>
+                <StyledListCard>
                   <h2>{trip.location}</h2>
                   {trip.date}
                   <br />
@@ -38,7 +38,7 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
                   ) : (
                     <p>no friends added</p>
                   )}
-                </StyledDetailCard>
+                </StyledListCard>
               </StyledCardLink>
               <CenteredButtonWrapper>
                 <DeleteTripButton
@@ -53,7 +53,16 @@ export default function TripList({ campingTrips, onDeleteTrip }) {
           ))}
           <FooterContainer>
             <CenteredLink href="/formpage">
-              <AddTripButton>+ new trip</AddTripButton>
+              <AddTripButton>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="48"
+                  viewBox="0 -960 960 960"
+                  width="48"
+                >
+                  <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z" />
+                </svg>
+              </AddTripButton>
             </CenteredLink>
           </FooterContainer>
         </Container>
@@ -71,18 +80,18 @@ const AddTripButton = styled.button`
   color: black;
   border: none;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 50%;
   font-size: 16px;
   cursor: pointer;
   gap: none;
   svg {
     fill: black;
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    height: 25px;
   }
 `;
 
-const StyledDetailCard = styled.article`
+const StyledListCard = styled.article`
   background-color: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;

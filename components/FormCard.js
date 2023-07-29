@@ -184,12 +184,30 @@ export default function FormCard({ onAddTrip }) {
                 </StyledList>
               ))}
             </ul>
-            <StyledButton type="submit">Add to Trip</StyledButton>
+            <StyledButton type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z" />
+              </svg>
+            </StyledButton>
           </form>
         </StyledFormCard>
         <FooterContainer>
           <CenteredLink href="/">
-            <StyledListPageButton>Back to List Page</StyledListPageButton>
+            <StyledListPageButton>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path d="M259-200v-60h310q70 0 120.5-46.5T740-422q0-69-50.5-115.5T569-584H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800-422q0 94-68.5 158T568-200H259Z" />
+              </svg>
+            </StyledListPageButton>
           </CenteredLink>
         </FooterContainer>
       </Container>
@@ -202,10 +220,15 @@ const StyledButton = styled.button`
   color: black;
   border: none;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 50%;
   font-size: 16px;
   cursor: pointer;
   gap: none;
+  svg {
+    fill: black;
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const StyledList = styled.li`

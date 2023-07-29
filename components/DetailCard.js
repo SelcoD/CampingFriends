@@ -28,7 +28,7 @@ export default function DetailCard({ campingTrip }) {
             {campingTrip.location}
           </article>
           <br />
-          <article>The weather is:</article>
+          <article>where the weather is</article>
           {campingTrip.conditions.length > 0 ? (
             <ul>
               {campingTrip.conditions.map((condition) => {
@@ -38,7 +38,7 @@ export default function DetailCard({ campingTrip }) {
           ) : (
             <p>no conditions added</p>
           )}
-          <article>Friends:</article>
+          <article>with</article>
           {campingTrip.friends.length > 0 ? (
             <ul>
               {campingTrip.friends.map((friend) => {
@@ -62,12 +62,21 @@ export default function DetailCard({ campingTrip }) {
               ))}
             </ul>
           ) : (
-            <p>no images added</p>
+            <p> </p>
           )}
         </StyledDetailCard>
         <FooterContainer>
           <CenteredLink href="/">
-            <StyledListPageButton>Back to List Page</StyledListPageButton>
+            <StyledListPageButton>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path d="m274-450 248 248-42 42-320-320 320-320 42 42-248 248h526v60H274Z" />
+              </svg>
+            </StyledListPageButton>
           </CenteredLink>
         </FooterContainer>
       </Container>
