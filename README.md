@@ -1,37 +1,23 @@
-# New Next Project
+# Capstone Project: Camping-Friends
 
-This project was created from the neue fische `next` template.
+![Camping-Friends](/public/capstone_header.png)
 
-You can [🔗 **use this template on CodeSandbox**](https://codesandbox.io/p/sandbox/github/neuefische/web-exercises/tree/main/templates/next?file=/README.md) or locally by running this command in your Terminal:
+Camping-Friends helps you to easy organize your campingtrips. Create, edit and share campingtrips with your Friends 🏕
 
-```bash
-npx -y ghcd@latest neuefische/web-exercises/tree/main/templates/next my-app -i
-```
+## Demo:
 
-## Development
+You can find the hosted version on Vercel: [Demo Version of Capstone Project](https://camping-friends.vercel.app/)
 
-### Local Development
+**Important:** This demo is optimized for mobile screen.
 
-To work locally, please install the dependencies using `npm i` first.
+## Tech Stack
 
-Run `npm run dev` to start a development server and open the displayed URL in a browser.
-
-Use `npm run test` to run the tests.
-
-### CodeSandbox Cloud
-
-Select the "Preview: 3000" tab to view this project.
-
-Select the "Tests: logs" tab to view the tests.
-
-> The `npm run dev` and `npm run test` scripts run automatically.
-
-### Scripts
-
-You can use the following commands:
-
-- `npm run dev` to start a development server
-- `npm run build` to build the project
-- `npm run start` to start a production server
-- `npm run test` to run the tests
-- `npm run lint` to run the linter
+- React
+- React Hooks
+- React Router
+- JavaScript
+- styled-components
+- localStorage
+- npm
+- Vercel
+- Cloudinary

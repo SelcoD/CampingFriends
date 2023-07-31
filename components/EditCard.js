@@ -78,7 +78,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
         <StyledEditCard>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="location">Location:</label>
+              <label htmlFor="location"></label>
               <br />
               <input
                 type="text"
@@ -89,7 +89,6 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 required
               />
               <br />
-
               {allConditions.map((condition) => (
                 <div key={condition}>
                   <input
@@ -104,7 +103,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                   <br />
                 </div>
               ))}
-              <label htmlFor="date">Date:</label>
+              <label htmlFor="date"></label>
               <br />
               <input
                 type="date"
@@ -115,7 +114,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 required
               />
               <br />
-              <label htmlFor="friends">Friends:</label>
+              <label htmlFor="friends"></label>
               <br />
               <div>
                 <input
