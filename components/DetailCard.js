@@ -1,6 +1,5 @@
 import {
   Container,
-  Card,
   Header,
   CenteredLink,
   StyledImageLogo,

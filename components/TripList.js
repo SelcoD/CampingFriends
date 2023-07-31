@@ -2,7 +2,6 @@ import {
   Container,
   StyledCardLink,
   Header,
-  CenteredLinkWrapper,
   CenteredLink,
   FooterContainer,
   StyledImageLogo,
