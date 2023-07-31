@@ -2,7 +2,7 @@
 
 ![Camping-Friends](/public/capstone_header.png)
 
-Camping-Friends helps you to easy organize your campingtrips. Create, edit and share campingtrips with your Friends 🏕
+Camping-Friends helps you to easy organize your camping trips. Create, edit and share camping trips with your Friends 🏕
 
 ## Demo:
 
