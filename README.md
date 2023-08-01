@@ -1,37 +1,37 @@
-# New Next Project
+# Capstone Project: Camping-Friends
 
-This project was created from the neue fische `next` template.
+![Camping-Friends](/public/capstone_header.png)
 
-You can [🔗 **use this template on CodeSandbox**](https://codesandbox.io/p/sandbox/github/neuefische/web-exercises/tree/main/templates/next?file=/README.md) or locally by running this command in your Terminal:
+Camping-Friends helps you to easy organize your camping trips. Create, edit and share camping trips with your Friends 🏕
 
-```bash
-npx -y ghcd@latest neuefische/web-exercises/tree/main/templates/next my-app -i
-```
+## Demo:
 
-## Development
+You can find the hosted version on Vercel: [Demo Version of Capstone Project](https://camping-friends.vercel.app/)
 
-### Local Development
+**Important:** This demo is optimized for mobile screen.
 
-To work locally, please install the dependencies using `npm i` first.
+## Tech Stack
 
-Run `npm run dev` to start a development server and open the displayed URL in a browser.
+Frontend:
 
-Use `npm run test` to run the tests.
+- React: The code is written using React, a popular JavaScript library for building user interfaces.
+- Next.js: A framework built on top of React that provides server-side rendering, routing, and other helpful features.
+- styled-components: A CSS-in-JS library used for styling components. It allows you to write CSS code as JavaScript tagged template literals.
 
-### CodeSandbox Cloud
+Backend:
 
-Select the "Preview: 3000" tab to view this project.
+- Node.js: The runtime environment for executing JavaScript code on the server-side.
+- Cloudinary: A cloud-based image and video management service used for image uploads and handling.
 
-Select the "Tests: logs" tab to view the tests.
+State Management:
 
-> The `npm run dev` and `npm run test` scripts run automatically.
+- use-local-storage-state: A custom hook used for managing state in local storage.
 
-### Scripts
+Additional Libraries:
 
-You can use the following commands:
+- formidable: A Node.js library for parsing form data, used here for handling file uploads.
+- uuid: A library used to generate unique identifiers (UUIDs) for trip IDs.
 
-- `npm run dev` to start a development server
-- `npm run build` to build the project
-- `npm run start` to start a production server
-- `npm run test` to run the tests
-- `npm run lint` to run the linter
+API:
+
+- the code also uses an API route to handle image uploads to Cloudinary.

@@ -8,15 +8,18 @@ export const StyledUnorderedList = styled.ul`
 
 export const StyledListPageButton = styled.button`
   background-color: #19cbe7;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-
   color: black;
   border: none;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 50%;
   font-size: 16px;
   cursor: pointer;
   gap: none;
+  svg {
+    fill: black;
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 export const Container = styled.div`
@@ -73,7 +76,8 @@ export const FooterContainer = styled.footer`
   left: 0;
   width: 100%;
   background: none;
-  padding: 10px;
+  padding-top: 0;
+  padding-bottom: 5px;
   text-align: center;
 `;
 

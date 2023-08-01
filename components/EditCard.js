@@ -17,7 +17,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
 
   const router = useRouter();
 
-  const allConditions = ["Good weather", "Sunny", "Cloudy", "Rainy", "Snowy"];
+  const allConditions = ["Sunny", "Cloudy", "Rainy", "Windy"];
 
   useEffect(() => {
     setConditions(currentTrip.conditions || []);
@@ -75,12 +75,12 @@ export default function EditCard({ currentTrip, onEditTrip }) {
         />
       </Header>
       <Container>
-        <StyledEditCard>
-          <form onSubmit={handleSubmit}>
+        <div>
+          <StyledForm onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="location">Location:</label>
+              <StyledLabel htmlFor="location"></StyledLabel>
               <br />
-              <input
+              <StyledInput
                 type="text"
                 id="location"
                 name="location"
@@ -91,7 +91,7 @@ export default function EditCard({ currentTrip, onEditTrip }) {
               <br />
 
               {allConditions.map((condition) => (
-                <div key={condition}>
+                <StyledCheckboxContainer key={condition}>
                   <input
                     type="checkbox"
                     id={`condition-${condition}`}
@@ -100,13 +100,15 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                     onChange={handleConditionChange}
                     checked={conditions.includes(condition)}
                   />
-                  <label htmlFor={`condition-${condition}`}>{condition}</label>
+                  <StyledCheckboxLabel htmlFor={`condition-${condition}`}>
+                    {condition}
+                  </StyledCheckboxLabel>
                   <br />
-                </div>
+                </StyledCheckboxContainer>
               ))}
-              <label htmlFor="date">Date:</label>
+              <StyledLabel htmlFor="date"></StyledLabel>
               <br />
-              <input
+              <StyledInput
                 type="date"
                 id="date"
                 name="date"
@@ -115,10 +117,10 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                 required
               />
               <br />
-              <label htmlFor="friends">Friends:</label>
+              <StyledLabel htmlFor="friends"></StyledLabel>
               <br />
               <div>
-                <input
+                <StyledInput
                   type="text"
                   id="friends"
                   name="friends"
@@ -150,14 +152,24 @@ export default function EditCard({ currentTrip, onEditTrip }) {
                   </StyledList>
                 ))}
               </li>
+              <br />
 
               <button type="submit">Save changes</button>
             </div>
-          </form>
-        </StyledEditCard>
+          </StyledForm>
+        </div>
         <FooterContainer>
           <CenteredLink href="/">
-            <StyledListPageButton>Back to List Page</StyledListPageButton>
+            <StyledListPageButton>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path d="m274-450 248 248-42 42-320-320 320-320 42 42-248 248h526v60H274Z" />
+              </svg>
+            </StyledListPageButton>
           </CenteredLink>
         </FooterContainer>
       </Container>
@@ -165,23 +177,38 @@ export default function EditCard({ currentTrip, onEditTrip }) {
   );
 }
 
-const StyledList = styled.li`
-  list-style-type: none;
-`;
-
-const StyledEditCard = styled.article`
-  background-color: #ffffff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  max-width: 800px;
-  border-radius: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+`;
+
+const StyledLabel = styled.label`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const StyledCheckboxContainer = styled.div`
+  flex-flow: row wrap;
+  align-items: flex-start;
+`;
+
+const StyledCheckboxLabel = styled.label`
+  margin-left: 0;
+`;
+
+const StyledList = styled.li`
+  list-style-type: none;
 `;

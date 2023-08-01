@@ -85,12 +85,12 @@ export default function FormCard({ onAddTrip }) {
         />
       </Header>
       <Container>
-        <StyledFormCard>
-          <ImageUpload onSubmit={handleUploadImage} tripImages={tripImages} />
+        <div>
+          <ImageUpload setTripImages={setTripImages} tripImages={tripImages} />
 
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="location"></label>
-            <input
+          <StyledForm onSubmit={handleSubmit}>
+            <StyledLabel htmlFor="location"></StyledLabel>
+            <StyledInput
               type="text"
               id="location"
               name="location"
@@ -98,53 +98,52 @@ export default function FormCard({ onAddTrip }) {
               required
             />
             <br />
-            <input
-              type="checkbox"
-              id="condition1"
-              name="conditions"
-              value="Good weather"
-              onChange={handleConditionChange}
-            />
-            <label htmlFor="condition1">Good weather</label>
+            <StyledCheckboxContainer>
+              <input
+                type="checkbox"
+                id="condition2"
+                name="conditions"
+                value="Sunny"
+                onChange={handleConditionChange}
+              />
+              <StyledCheckboxLabel htmlFor="condition2">
+                Sunny
+              </StyledCheckboxLabel>
+              <input
+                type="checkbox"
+                id="condition3"
+                name="conditions"
+                value="Cloudy"
+                onChange={handleConditionChange}
+              />
+              <StyledCheckboxLabel htmlFor="condition3">
+                Cloudy
+              </StyledCheckboxLabel>
+              <input
+                type="checkbox"
+                id="condition4"
+                name="conditions"
+                value="Rainy"
+                onChange={handleConditionChange}
+              />
+              <StyledCheckboxLabel htmlFor="condition4">
+                Rainy
+              </StyledCheckboxLabel>
+              <input
+                type="checkbox"
+                id="condition5"
+                name="conditions"
+                value="Windy"
+                onChange={handleConditionChange}
+              />
+              <StyledCheckboxLabel htmlFor="condition5">
+                Windy
+              </StyledCheckboxLabel>
+            </StyledCheckboxContainer>
+
             <br />
-            <input
-              type="checkbox"
-              id="condition2"
-              name="conditions"
-              value="Sunny"
-              onChange={handleConditionChange}
-            />
-            <label htmlFor="condition2">Sunny</label>
-            <br />
-            <input
-              type="checkbox"
-              id="condition3"
-              name="conditions"
-              value="Cloudy"
-              onChange={handleConditionChange}
-            />
-            <label htmlFor="condition3">Cloudy</label>
-            <br />
-            <input
-              type="checkbox"
-              id="condition4"
-              name="conditions"
-              value="Rainy"
-              onChange={handleConditionChange}
-            />
-            <label htmlFor="condition4">Rainy</label>
-            <br />
-            <input
-              type="checkbox"
-              id="condition5"
-              name="conditions"
-              value="Snowy"
-              onChange={handleConditionChange}
-            />
-            <label htmlFor="condition5">Snowy</label>
-            <br />
-            <label htmlFor="date"></label>
-            <input
+            <StyledLabel htmlFor="date"></StyledLabel>
+            <StyledInput
               type="date"
               id="date"
               name="date"
@@ -152,8 +151,8 @@ export default function FormCard({ onAddTrip }) {
               required
             />
             <br />
-            <label htmlFor="friends"></label>
-            <input
+            <StyledLabel htmlFor="friends"></StyledLabel>
+            <StyledInput
               type="text"
               id="friends"
               name="friends"
@@ -184,12 +183,30 @@ export default function FormCard({ onAddTrip }) {
                 </StyledList>
               ))}
             </ul>
-            <StyledButton type="submit">Add to Trip</StyledButton>
-          </form>
-        </StyledFormCard>
+            <StyledButton type="submit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z" />
+              </svg>
+            </StyledButton>
+          </StyledForm>
+        </div>
         <FooterContainer>
           <CenteredLink href="/">
-            <StyledListPageButton>Back to List Page</StyledListPageButton>
+            <StyledListPageButton>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path d="M259-200v-60h310q70 0 120.5-46.5T740-422q0-69-50.5-115.5T569-584H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800-422q0 94-68.5 158T568-200H259Z" />
+              </svg>
+            </StyledListPageButton>
           </CenteredLink>
         </FooterContainer>
       </Container>
@@ -197,34 +214,63 @@ export default function FormCard({ onAddTrip }) {
   );
 }
 
+const StyledFriendInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledFriendInput = styled.input`
+  margin-right: 10px;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
+`;
+
+const StyledLabel = styled.label`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const StyledCheckboxContainer = styled.div`
+  flex-flow: row wrap;
+  align-items: flex-start;
+`;
+
+const StyledCheckboxLabel = styled.label`
+  margin-left: 0;
+`;
+
 const StyledButton = styled.button`
   background-color: #19cbe7;
   color: black;
   border: none;
   padding: 10px;
-  border-radius: 4px;
+  border-radius: 50%;
   font-size: 16px;
   cursor: pointer;
   gap: none;
+  svg {
+    fill: black;
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const StyledList = styled.li`
   list-style-type: none;
-`;
-
-const StyledFormCard = styled.article`
-  background-color: #ffffff;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  max-width: 800px;
-  border-radius: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
 `;
